@@ -84,20 +84,34 @@ function showNameScreen() {
         </h1>
 
         <input
-          type="text"
-          placeholder="My Tribe"
-          style="
-            width:100%;
-            max-width:400px;
-            padding:15px;
-            border-radius:12px;
-            border:1px solid #ccc;
-            font-size:18px;
-          "
-        >
+  id="tribeName"
+  type="text"
+  placeholder="My Tribe"
+  style="
+    width:100%;
+    max-width:400px;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:18px;
+  "
+>
+
+<br><br>
+
+<button onclick="saveTribeName()">
+  Continue
+</button>
+
       </div>
     </div>
   `;
+}
+    function saveTribeName() {
+  const tribeName =
+    document.getElementById("tribeName").value.trim() || "My Tribe";
+
+  alert("Tribe created: " + tribeName);
 }
 </script>
   
