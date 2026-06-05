@@ -171,7 +171,7 @@ ${categoryNode("🌱", "Community", "22%", "15%")}
 
 function categoryNode(icon, label, left, top) {
   return `
-    <div style="
+    <button onclick="openCategory('${label}')" style="
       position:absolute;
       left:${left};
       top:${top};
@@ -186,12 +186,65 @@ function categoryNode(icon, label, left, top) {
       align-items:center;
       justify-content:center;
       box-shadow:0 12px 30px rgba(46,39,33,0.12);
+      cursor:pointer;
+      color:#2e2721;
+      font-family:Georgia, serif;
     ">
       <div style="font-size:30px;">${icon}</div>
       <div style="font-size:16px;">${label}</div>
+    </button>
+  `;
+}
+    
+function openCategory(categoryName) {
+  document.body.innerHTML = `
+    <div style="
+      min-height:100vh;
+      background:#f3eadb;
+      font-family:Georgia, serif;
+      color:#2e2721;
+      text-align:center;
+      padding:40px;
+      box-sizing:border-box;
+    ">
+      <button onclick="saveTribeName()" style="
+        margin-bottom:40px;
+        background:#2e2721;
+        color:#fffaf1;
+        border:none;
+        border-radius:999px;
+        padding:12px 22px;
+        font-family:Georgia, serif;
+        cursor:pointer;
+      ">
+        ← Back to Map
+      </button>
+
+      <h1 style="font-size:54px; margin-bottom:10px;">
+        ${categoryName}
+      </h1>
+
+      <p style="font-size:20px; color:#6f6255;">
+        No members yet.
+      </p>
+
+      <button style="
+        margin-top:30px;
+        background:#2e2721;
+        color:#fffaf1;
+        border:none;
+        border-radius:999px;
+        padding:15px 28px;
+        font-family:Georgia, serif;
+        font-size:17px;
+        cursor:pointer;
+      ">
+        + Add Member
+      </button>
     </div>
   `;
 }
+    
     
 </script>
   
