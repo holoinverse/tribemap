@@ -446,24 +446,53 @@ function getRelationshipOptions(categoryName) {
 }
 
   if (categoryName === "Friends") {
-    return `
-      <option value="Best Friend">Best Friend</option>
-      <option value="Close Friend">Close Friend</option>
-      <option value="Friend">Friend</option>
-      <option value="Childhood Friend">Childhood Friend</option>
-    `;
-  }
+  return `
+    <option value="Best Friend">Best Friend</option>
+    <option value="Close Friend">Close Friend</option>
+    <option value="Friend">Friend</option>
+    <option value="Childhood Friend">Childhood Friend</option>
+
+    <option value="School Friend">School Friend</option>
+    <option value="College Friend">College Friend</option>
+
+    <option value="Online Friend">Online Friend</option>
+
+    <option value="Travel Friend">Travel Friend</option>
+
+    <option value="Neighbor">Neighbor</option>
+
+    <option value="Acquaintance">Acquaintance</option>
+  `;
+}
 
   if (categoryName === "Relationship") {
-    return `
-      <option value="Wife">Wife</option>
-      <option value="Husband">Husband</option>
-      <option value="Girlfriend">Girlfriend</option>
-      <option value="Boyfriend">Boyfriend</option>
-      <option value="Partner">Partner</option>
-      <option value="Ex Partner">Ex Partner</option>
-    `;
-  }
+  return `
+    <option value="Wife">Wife</option>
+    <option value="Husband">Husband</option>
+
+    <option value="Girlfriend">Girlfriend</option>
+    <option value="Boyfriend">Boyfriend</option>
+
+    <option value="Fiancée">Fiancée</option>
+    <option value="Fiancé">Fiancé</option>
+
+    <option value="Partner">Partner</option>
+
+    <option value="Ex Wife">Ex Wife</option>
+    <option value="Ex Husband">Ex Husband</option>
+
+    <option value="Ex Girlfriend">Ex Girlfriend</option>
+    <option value="Ex Boyfriend">Ex Boyfriend</option>
+
+    <option value="Ex Partner">Ex Partner</option>
+
+    <option value="Crush">Crush</option>
+
+    <option value="Relationship Interest">
+      Relationship Interest
+    </option>
+  `;
+}
 
   if (categoryName === "Work") {
     return `
