@@ -370,6 +370,7 @@ function saveMember(categoryName) {
 
   openCategory(categoryName);
 }
+    
 function renderMembers(categoryName) {
   const categoryMembers =
     members.filter(member => member.category === categoryName);
@@ -381,34 +382,8 @@ if (categoryMembers.length === 0) {
     </p>
   `;
 }
-
-  return `
-    <div style="
-      display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-      justify-content:center;
-      margin-top:30px;
-    ">
-      ${categoryMembers.map(member => `
-        <div style="
-          width:160px;
-          padding:22px;
-          border-radius:28px;
-          background:#fffaf1;
-          border:1px solid #d8c8af;
-          box-shadow:0 12px 30px rgba(46,39,33,0.10);
-        ">
-          <div style="font-size:38px; margin-bottom:10px;">${member.avatar}</div>
-          <strong style="font-size:22px;">${member.name}</strong>
-          <div style="font-size:16px; color:#6f6255; margin-top:6px;">
-            ${member.relationship}
-          </div>
-        </div>
-      `).join("")}
-    </div>
-  `;
-}  
+  
+function getRelationshipOptions(categoryName) {
 
 if (categoryName === "Family") {
   return `
@@ -547,6 +522,14 @@ if (categoryName === "Family") {
     <option value="Teacher">Teacher</option>
     <option value="Community Member">Community Member</option>
   `;
+}
+    
+   function deleteMember(memberName, categoryName) {
+  members = members.filter(member => {
+    return !(member.name === memberName && member.category === categoryName);
+  });
+
+  openCategory(categoryName);
 }
     
 </script>
