@@ -302,11 +302,41 @@ function showAddMember(categoryName) {
         "
       >
 
-      <br><br>
+   <br><br>
 
-      <button onclick="saveMember('${categoryName}')">
-        Save
-      </button>
+<p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
+  Choose an avatar
+</p>
+
+<select
+  id="memberAvatar"
+  style="
+    width:100%;
+    max-width:400px;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:18px;
+    margin-bottom:20px;
+  "
+>
+  <option value="👵">👵 Grandmother</option>
+  <option value="👴">👴 Grandfather</option>
+  <option value="👩">👩 Mother</option>
+  <option value="👨">👨 Father</option>
+  <option value="👧">👧 Girl</option>
+  <option value="👦">👦 Boy</option>
+  <option value="🧑">🧑 Friend</option>
+  <option value="🐕">🐕 Dog</option>
+  <option value="🐈">🐈 Cat</option>
+  <option value="🐇">🐇 Rabbit</option>
+</select>
+
+<br>
+
+<button onclick="saveMember('${categoryName}')">
+  Save
+</button>
     </div>
   `;
 }
@@ -318,16 +348,20 @@ function saveMember(categoryName) {
   const relationship =
     document.getElementById("memberRelationship").value.trim();
 
+  const avatar =
+  document.getElementById("memberAvatar").value;
+
   if (!memberName || !relationship) {
     alert("Please add name and relationship.");
     return;
   }
 
   members.push({
-    name: memberName,
-    relationship: relationship,
-    category: categoryName
-  });
+  name: memberName,
+  relationship: relationship,
+  category: categoryName,
+  avatar: avatar
+});
 
   openCategory(categoryName);
 }
@@ -360,7 +394,7 @@ if (categoryMembers.length === 0) {
           border:1px solid #d8c8af;
           box-shadow:0 12px 30px rgba(46,39,33,0.10);
         ">
-          <div style="font-size:38px; margin-bottom:10px;">👤</div>
+          <div style="font-size:38px; margin-bottom:10px;">${member.avatar}</div>
           <strong style="font-size:22px;">${member.name}</strong>
           <div style="font-size:16px; color:#6f6255; margin-top:6px;">
             ${member.relationship}
