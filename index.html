@@ -289,18 +289,19 @@ function showAddMember(categoryName) {
 
       <br>
 
-      <input
-        id="memberRelationship"
-        placeholder="Relationship"
-        style="
-          width:100%;
-          max-width:400px;
-          padding:15px;
-          border-radius:12px;
-          border:1px solid #ccc;
-          font-size:18px;
-        "
-      >
+  <select
+  id="memberRelationship"
+  style="
+    width:100%;
+    max-width:400px;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:18px;
+  "
+>
+  ${getRelationshipOptions(categoryName)}
+</select>
 
    <br><br>
 
@@ -403,7 +404,72 @@ if (categoryMembers.length === 0) {
       `).join("")}
     </div>
   `;
-}    
+}  
+
+function getRelationshipOptions(categoryName) {
+  if (categoryName === "Family") {
+    return `
+      <option value="Grandmother">Grandmother</option>
+      <option value="Grandfather">Grandfather</option>
+      <option value="Mother">Mother</option>
+      <option value="Father">Father</option>
+      <option value="Daughter">Daughter</option>
+      <option value="Son">Son</option>
+      <option value="Sister">Sister</option>
+      <option value="Brother">Brother</option>
+      <option value="Aunt">Aunt</option>
+      <option value="Uncle">Uncle</option>
+      <option value="Cousin">Cousin</option>
+    `;
+  }
+
+  if (categoryName === "Friends") {
+    return `
+      <option value="Best Friend">Best Friend</option>
+      <option value="Close Friend">Close Friend</option>
+      <option value="Friend">Friend</option>
+      <option value="Childhood Friend">Childhood Friend</option>
+    `;
+  }
+
+  if (categoryName === "Relationship") {
+    return `
+      <option value="Wife">Wife</option>
+      <option value="Husband">Husband</option>
+      <option value="Girlfriend">Girlfriend</option>
+      <option value="Boyfriend">Boyfriend</option>
+      <option value="Partner">Partner</option>
+      <option value="Ex Partner">Ex Partner</option>
+    `;
+  }
+
+  if (categoryName === "Work") {
+    return `
+      <option value="Boss">Boss</option>
+      <option value="Manager">Manager</option>
+      <option value="Colleague">Colleague</option>
+      <option value="Client">Client</option>
+      <option value="Employee">Employee</option>
+    `;
+  }
+
+  if (categoryName === "Pets") {
+    return `
+      <option value="Dog">Dog</option>
+      <option value="Cat">Cat</option>
+      <option value="Rabbit">Rabbit</option>
+      <option value="Bird">Bird</option>
+    `;
+  }
+
+  return `
+    <option value="Connection">Connection</option>
+    <option value="Mentor">Mentor</option>
+    <option value="Teacher">Teacher</option>
+    <option value="Community Member">Community Member</option>
+  `;
+}
+    
 </script>
 
   
