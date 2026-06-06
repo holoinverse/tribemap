@@ -228,23 +228,93 @@ function openCategory(categoryName) {
         No members yet.
       </p>
 
-      <button style="
-        margin-top:30px;
-        background:#2e2721;
-        color:#fffaf1;
-        border:none;
-        border-radius:999px;
-        padding:15px 28px;
-        font-family:Georgia, serif;
-        font-size:17px;
-        cursor:pointer;
-      ">
-        + Add Member
-      </button>
+      <button onclick="showAddMember('${categoryName}')" style="
+  margin-top:30px;
+  background:#2e2721;
+  color:#fffaf1;
+  border:none;
+  border-radius:999px;
+  padding:15px 28px;
+  font-family:Georgia, serif;
+  font-size:17px;
+  cursor:pointer;
+">
+  + Add Member
+</button>
+
     </div>
   `;
 }
     
+function showAddMember(categoryName) {
+  document.body.innerHTML = `
+    <div style="
+      min-height:100vh;
+      background:#f3eadb;
+      font-family:Georgia, serif;
+      color:#2e2721;
+      text-align:center;
+      padding:40px;
+      box-sizing:border-box;
+    ">
+      <h1>Add Member</h1>
+
+      <p>${categoryName}</p>
+
+      <input
+        id="memberName"
+        placeholder="Name"
+        style="
+          width:100%;
+          max-width:400px;
+          padding:15px;
+          border-radius:12px;
+          border:1px solid #ccc;
+          font-size:18px;
+          margin-bottom:20px;
+        "
+      >
+
+      <br>
+
+      <input
+        id="memberRelationship"
+        placeholder="Relationship"
+        style="
+          width:100%;
+          max-width:400px;
+          padding:15px;
+          border-radius:12px;
+          border:1px solid #ccc;
+          font-size:18px;
+        "
+      >
+
+      <br><br>
+
+      <button onclick="saveMember('${categoryName}')">
+        Save
+      </button>
+    </div>
+  `;
+}
+
+function saveMember(categoryName) {
+  const memberName =
+    document.getElementById("memberName").value.trim();
+
+  const relationship =
+    document.getElementById("memberRelationship").value.trim();
+
+  alert(
+    "Member Saved:\\n\\n" +
+    memberName +
+    "\\n" +
+    relationship +
+    "\\n\\nCategory: " +
+    categoryName
+  );
+}
     
 </script>
   
