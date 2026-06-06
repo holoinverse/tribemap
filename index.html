@@ -61,8 +61,14 @@
     <button onclick="showNameScreen()">   Begin Mapping </button>
   </div>
   <script>
+    
+let currentTribeName = "";
+let members = [];
+    
 function showNameScreen() {
+  
   document.body.innerHTML = `
+  
     <div style="
       min-height:100vh;
       display:flex;
@@ -107,9 +113,17 @@ function showNameScreen() {
     </div>
   `;
 }
-   function saveTribeName() {
+  function saveTribeName() {
   const tribeName =
     document.getElementById("tribeName").value.trim() || "My Tribe";
+
+  currentTribeName = tribeName;
+
+  showMap();
+}
+
+function showMap() {
+  const tribeName = currentTribeName || "My Tribe";
 
   document.body.innerHTML = `
     <div style="
@@ -207,7 +221,7 @@ function openCategory(categoryName) {
       padding:40px;
       box-sizing:border-box;
     ">
-      <button onclick="saveTribeName()" style="
+      <button onclick="showMap()" style="
         margin-bottom:40px;
         background:#2e2721;
         color:#fffaf1;
@@ -224,11 +238,9 @@ function openCategory(categoryName) {
         ${categoryName}
       </h1>
 
-      <p style="font-size:20px; color:#6f6255;">
-        No members yet.
-      </p>
+     ${renderMembers(categoryName)}
 
-      <button onclick="showAddMember('${categoryName}')" style="
+  <button onclick="showAddMember('${categoryName}')" style="
   margin-top:30px;
   background:#2e2721;
   color:#fffaf1;
@@ -306,17 +318,60 @@ function saveMember(categoryName) {
   const relationship =
     document.getElementById("memberRelationship").value.trim();
 
-  alert(
-    "Member Saved:\\n\\n" +
-    memberName +
-    "\\n" +
-    relationship +
-    "\\n\\nCategory: " +
-    categoryName
-  );
+  if (!memberName || !relationship) {
+    alert("Please add name and relationship.");
+    return;
+  }
+
+  members.push({
+    name: memberName,
+    relationship: relationship,
+    category: categoryName
+  });
+
+  openCategory(categoryName);
 }
-    
+function renderMembers(categoryName) {
+  const categoryMembers =
+    members.filter(member => member.category === categoryName);
+
+if (categoryMembers.length === 0) {
+  return `
+    <p style="font-size:20px; color:#6f6255;">
+      No members yet.
+    </p>
+  `;
+}
+
+  return `
+    <div style="
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      justify-content:center;
+      margin-top:30px;
+    ">
+      ${categoryMembers.map(member => `
+        <div style="
+          width:160px;
+          padding:22px;
+          border-radius:28px;
+          background:#fffaf1;
+          border:1px solid #d8c8af;
+          box-shadow:0 12px 30px rgba(46,39,33,0.10);
+        ">
+          <div style="font-size:38px; margin-bottom:10px;">👤</div>
+          <strong style="font-size:22px;">${member.name}</strong>
+          <div style="font-size:16px; color:#6f6255; margin-top:6px;">
+            ${member.relationship}
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}    
 </script>
+
   
 </body>
 </html>
