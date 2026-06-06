@@ -406,8 +406,7 @@ if (categoryMembers.length === 0) {
   `;
 }  
 
-function getRelationshipOptions(categoryName) {
-  if (categoryName === "Family") {
+if (categoryName === "Family") {
   return `
     <option value="Grandmother">Grandmother</option>
     <option value="Grandfather">Grandfather</option>
@@ -421,30 +420,39 @@ function getRelationshipOptions(categoryName) {
     <option value="Sister">Sister</option>
     <option value="Brother">Brother</option>
 
+    <option value="Half Sister">Half Sister</option>
+    <option value="Half Brother">Half Brother</option>
+
+    <option value="Stepmother">Stepmother</option>
+    <option value="Stepfather">Stepfather</option>
+
+    <option value="Stepsister">Stepsister</option>
+    <option value="Stepbrother">Stepbrother</option>
+
+    <option value="Stepdaughter">Stepdaughter</option>
+    <option value="Stepson">Stepson</option>
+
     <option value="Aunt">Aunt</option>
     <option value="Uncle">Uncle</option>
 
     <option value="Cousin">Cousin</option>
+
     <option value="Niece">Niece</option>
     <option value="Nephew">Nephew</option>
 
     <option value="Granddaughter">Granddaughter</option>
     <option value="Grandson">Grandson</option>
 
-    <option value="Stepmother">Stepmother</option>
-    <option value="Stepfather">Stepfather</option>
-    <option value="Stepdaughter">Stepdaughter</option>
-    <option value="Stepson">Stepson</option>
-
     <option value="Mother-in-law">Mother-in-law</option>
     <option value="Father-in-law">Father-in-law</option>
+
     <option value="Sister-in-law">Sister-in-law</option>
     <option value="Brother-in-law">Brother-in-law</option>
 
     <option value="Family Member">Family Member</option>
   `;
 }
-
+    
   if (categoryName === "Friends") {
   return `
     <option value="Best Friend">Best Friend</option>
