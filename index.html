@@ -4,7 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TribeMap</title>
+  
+.avatar-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 90px);
+  gap:14px;
+  justify-content:center;
+}
 
+.avatar-btn{
+  width:90px;
+  height:90px;
+  border:none;
+  border-radius:50%;
+  background:#2e2721;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:all .2s ease;
+}
+
+.avatar-btn img{
+  width:55px;
+  height:55px;
+}
+
+.avatar-btn.selected{
+  outline:4px solid #c9a96e;
+  transform:scale(1.08);
+}
+  
   <style>
     body {
       margin: 0;
@@ -321,48 +351,50 @@ function showAddMember(categoryName) {
   justify-content:center;
   margin-bottom:25px;
 ">
- <button onclick="document.getElementById('memberAvatar').value='avatar-woman-short.png'">
-<img src="avatar-woman-short.png" width="55">
+<div class="avatar-grid">
+
+<button class="avatar-btn selected" onclick="selectAvatar('avatar-woman-short.png', this)">
+<img src="avatar-woman-short.png">
 </button>
 
-<button onclick="document.getElementById('memberAvatar').value='avatar-woman-long.png'">
-<img src="avatar-woman-long.png" width="55">
+<button class="avatar-btn" onclick="selectAvatar('avatar-woman-long.png', this)">
+<img src="avatar-woman-long.png">
 </button>
 
-<button onclick="document.getElementById('memberAvatar').value='avatar-girl.png'">
-<img src="avatar-girl.png" width="55">
+<button class="avatar-btn" onclick="selectAvatar('avatar-girl.png', this)">
+<img src="avatar-girl.png">
 </button>
 
-<button onclick="document.getElementById('memberAvatar').value='avatar-boy.png'">
-<img src="avatar-boy.png" width="55">
+<button class="avatar-btn" onclick="selectAvatar('avatar-boy.png', this)">
+<img src="avatar-boy.png">
 </button>
 
-<button onclick="document.getElementById('memberAvatar').value='avatar-baby.png'">
-<img src="avatar-baby.png" width="55">
+<button class="avatar-btn" onclick="selectAvatar('avatar-baby.png', this)">
+<img src="avatar-baby.png">
 </button>
 
-<button onclick="document.getElementById('memberAvatar').value='avatar-adult-man.png'">
-<img src="avatar-adult-man.png" width="55">
+<button class="avatar-btn" onclick="selectAvatar('avatar-adult-man.png', this)">
+<img src="avatar-adult-man.png">
 </button>
 
-<button onclick="document.getElementById('memberAvatar').value='avatar-elder-man.png'">
-<img src="avatar-elder-man.png" width="55">
+<button class="avatar-btn" onclick="selectAvatar('avatar-elder-man.png', this)">
+<img src="avatar-elder-man.png">
 </button>
 
-<button onclick="document.getElementById('memberAvatar').value='avatar-elder-woman.png'">
-<img src="avatar-elder-woman.png" width="55">
+<button class="avatar-btn" onclick="selectAvatar('avatar-elder-woman.png', this)">
+<img src="avatar-elder-woman.png">
 </button>
 
-<button onclick="document.getElementById('memberAvatar').value='avatar-generic.png'">
-<img src="avatar-generic.png" width="55">
+<button class="avatar-btn" onclick="selectAvatar('avatar-generic.png', this)">
+<img src="avatar-generic.png">
 </button>
 
-<button onclick="document.getElementById('memberAvatar').value='avatar-curly.png'">
-<img src="avatar-curly.png" width="55">
+<button class="avatar-btn" onclick="selectAvatar('avatar-curly.png', this)">
+<img src="avatar-curly.png">
 </button>
 
-<button onclick="document.getElementById('memberAvatar').value='avatar-paw.png'">
-<img src="avatar-paw.png" width="55">
+<button class="avatar-btn" onclick="selectAvatar('avatar-paw.png', this)">
+<img src="avatar-paw.png">
 </button>
 
 </div>
@@ -376,6 +408,16 @@ function showAddMember(categoryName) {
   `;
 }
 
+function selectAvatar(fileName, button){
+
+  document.getElementById('memberAvatar').value = fileName;
+
+  document.querySelectorAll('.avatar-btn')
+    .forEach(btn => btn.classList.remove('selected'));
+
+  button.classList.add('selected');
+}
+    
 function saveMember(categoryName) {
   const memberName =
     document.getElementById("memberName").value.trim();
