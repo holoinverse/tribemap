@@ -119,7 +119,10 @@ function showNameScreen() {
 
   currentTribeName = tribeName;
 
-  showMap();
+saveData();
+
+showMap();
+    
 }
 
 function showMap() {
@@ -368,7 +371,10 @@ function saveMember(categoryName) {
   avatar: avatar
 });
 
-  openCategory(categoryName);
+saveData();
+
+openCategory(categoryName);
+  
 }
     
 function renderMembers(categoryName) {
@@ -526,12 +532,21 @@ if (categoryName === "Family") {
     
    function deleteMember(memberName, categoryName) {
   members = members.filter(member => {
-    return !(member.name === memberName && member.category === categoryName);
-  });
+  return !(member.name === memberName &&
+           member.category === categoryName);
+});
 
-  openCategory(categoryName);
+saveData();
+
+openCategory(categoryName);
+     
 }
-    
+
+function saveData() {
+  localStorage.setItem("tribemap_name", currentTribeName);
+  localStorage.setItem("tribemap_members", JSON.stringify(members));
+}
+  
 </script>
 
   
