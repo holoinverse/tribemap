@@ -408,7 +408,15 @@ if (categoryMembers.length === 0) {
         border:1px solid #d8c8af;
         box-shadow:0 12px 30px rgba(46,39,33,0.10);
       ">
-        <div style="font-size:38px; margin-bottom:10px;">${member.avatar}</div>
+        <img
+  src="${member.avatar}"
+  style="
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    margin-bottom:10px;
+  "
+>
         <strong style="font-size:22px;">${member.name}</strong>
         <div style="font-size:16px; color:#6f6255; margin-top:6px;">
           ${member.relationship}
