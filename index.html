@@ -312,35 +312,60 @@ function showAddMember(categoryName) {
   Choose an avatar
 </p>
 
-<select
-  id="memberAvatar"
-  style="
-    width:100%;
-    max-width:400px;
-    padding:15px;
-    border-radius:12px;
-    border:1px solid #ccc;
-    font-size:18px;
-    margin-bottom:20px;
-  "
->
-<option value="avatar-woman-short.png">Woman Short</option>
-<option value="avatar-woman-long.png">Woman Long</option>
+<input id="memberAvatar" type="hidden" value="avatar-woman-short.png">
 
-<option value="avatar-girl.png">Girl</option>
-<option value="avatar-boy.png">Boy</option>
-<option value="avatar-baby.png">Baby</option>
+<div style="
+  display:grid;
+  grid-template-columns:repeat(4, 70px);
+  gap:14px;
+  justify-content:center;
+  margin-bottom:25px;
+">
+ <button onclick="document.getElementById('memberAvatar').value='avatar-woman-short.png'">
+<img src="avatar-woman-short.png" width="55">
+</button>
 
-<option value="avatar-man.png">Man</option>
-<option value="avatar-elder-man.png">Elder Man</option>
-<option value="avatar-elder-woman.png">Elder Woman</option>
+<button onclick="document.getElementById('memberAvatar').value='avatar-woman-long.png'">
+<img src="avatar-woman-long.png" width="55">
+</button>
 
-<option value="avatar-generic.png">Generic</option>
-<option value="avatar-curly.png">Curly</option>
+<button onclick="document.getElementById('memberAvatar').value='avatar-girl.png'">
+<img src="avatar-girl.png" width="55">
+</button>
 
-<option value="avatar-paw.png">Pet</option>
+<button onclick="document.getElementById('memberAvatar').value='avatar-boy.png'">
+<img src="avatar-boy.png" width="55">
+</button>
 
-</select>
+<button onclick="document.getElementById('memberAvatar').value='avatar-baby.png'">
+<img src="avatar-baby.png" width="55">
+</button>
+
+<button onclick="document.getElementById('memberAvatar').value='avatar-man.png'">
+<img src="avatar-man.png" width="55">
+</button>
+
+<button onclick="document.getElementById('memberAvatar').value='avatar-elder-man.png'">
+<img src="avatar-elder-man.png" width="55">
+</button>
+
+<button onclick="document.getElementById('memberAvatar').value='avatar-elder-woman.png'">
+<img src="avatar-elder-woman.png" width="55">
+</button>
+
+<button onclick="document.getElementById('memberAvatar').value='avatar-generic.png'">
+<img src="avatar-generic.png" width="55">
+</button>
+
+<button onclick="document.getElementById('memberAvatar').value='avatar-curly.png'">
+<img src="avatar-curly.png" width="55">
+</button>
+
+<button onclick="document.getElementById('memberAvatar').value='avatar-paw.png'">
+<img src="avatar-paw.png" width="55">
+</button>
+
+</div>
 
 <br>
 
