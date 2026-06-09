@@ -388,6 +388,50 @@ if (categoryMembers.length === 0) {
     </p>
   `;
 }
+
+  return `
+  <div style="
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+    margin-top:30px;
+  ">
+    ${categoryMembers.map(member => `
+      <div style="
+        width:160px;
+        padding:22px;
+        border-radius:28px;
+        background:#fffaf1;
+        border:1px solid #d8c8af;
+        box-shadow:0 12px 30px rgba(46,39,33,0.10);
+      ">
+        <div style="font-size:38px; margin-bottom:10px;">${member.avatar}</div>
+        <strong style="font-size:22px;">${member.name}</strong>
+        <div style="font-size:16px; color:#6f6255; margin-top:6px;">
+          ${member.relationship}
+        </div>
+
+        <br><br>
+
+        <button onclick="deleteMember('${member.name}', '${member.category}')" style="
+          background:#d8c8af;
+          color:#2e2721;
+          border:none;
+          border-radius:999px;
+          padding:8px 14px;
+          font-family:Georgia, serif;
+          font-size:14px;
+          cursor:pointer;
+        ">
+          Delete
+        </button>
+      </div>
+    `).join("")}
+  </div>
+`;
+
+  }
   
 function getRelationshipOptions(categoryName) {
 
@@ -546,7 +590,21 @@ function saveData() {
   localStorage.setItem("tribemap_name", currentTribeName);
   localStorage.setItem("tribemap_members", JSON.stringify(members));
 }
-  
+
+const savedName =
+  localStorage.getItem("tribemap_name");
+
+const savedMembers =
+  localStorage.getItem("tribemap_members");
+
+if (savedName) {
+  currentTribeName = savedName;
+}
+
+if (savedMembers) {
+  members = JSON.parse(savedMembers);
+}
+    
 </script>
 
   
