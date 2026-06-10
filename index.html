@@ -417,6 +417,35 @@ function openCategory(categoryName) {
     </div>
   `;
 }
+
+function saveOwnerProfile() {
+
+  tribeOwner.name =
+    document.getElementById("ownerName").value.trim() || "YOU";
+
+  const photoInput =
+    document.getElementById("ownerPhoto");
+
+  if (photoInput.files.length > 0) {
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+      tribeOwner.photo = e.target.result;
+
+      saveData();
+      showMap();
+    };
+
+    reader.readAsDataURL(photoInput.files[0]);
+
+  } else {
+
+    saveData();
+    showMap();
+  }
+}
     
 function showAddMember(categoryName) {
   document.body.innerHTML = `
@@ -1171,8 +1200,9 @@ if (savedName) {
 
 if (savedMembers) {
   members = JSON.parse(savedMembers);
+}
 
-  if (savedOwner) {
+if (savedOwner) {
   tribeOwner = JSON.parse(savedOwner);
 }
     
