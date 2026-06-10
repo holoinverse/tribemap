@@ -752,7 +752,7 @@ if (categoryName === "Family") {
   `;
 }
 
-   function editMember(memberName, categoryName){
+   function showEditMember(memberName, categoryName){
 
   const member =
     members.find(m =>
@@ -764,27 +764,84 @@ if (categoryName === "Family") {
     return;
   }
 
-  const newName =
-    prompt("Edit name:", member.name);
+  document.body.innerHTML = `
+    <div style="
+      min-height:100vh;
+      background:#f3eadb;
+      font-family:Georgia, serif;
+      color:#2e2721;
+      text-align:center;
+      padding:40px;
+      box-sizing:border-box;
+    ">
 
-  if(!newName){
-    return;
-  }
+      <h1 style="
+        font-size:72px;
+        margin-bottom:20px;
+        line-height:1;
+      ">
+        Edit Member
+      </h1>
 
-  const newRelationship =
-    prompt("Edit relationship:", member.relationship);
+      <p>${categoryName}</p>
 
-  if(!newRelationship){
-    return;
-  }
+      <input
+        id="editMemberName"
+        value="${member.name}"
+        style="
+          width:100%;
+          max-width:400px;
+          padding:15px;
+          border-radius:12px;
+          border:1px solid #ccc;
+          font-size:18px;
+          margin-bottom:20px;
+        "
+      >
 
-  member.name = newName;
-  member.relationship = newRelationship;
+      <br>
 
-  saveData();
+      <input
+        id="editMemberRelationship"
+        value="${member.relationship}"
+        style="
+          width:100%;
+          max-width:400px;
+          padding:15px;
+          border-radius:12px;
+          border:1px solid #ccc;
+          font-size:18px;
+          margin-bottom:20px;
+        "
+      >
 
-  openCategory(categoryName);
+      <br>
 
+      <img
+        src="${member.photo ? member.photo : member.avatar}"
+        style="
+          width:110px;
+          height:110px;
+          object-fit:cover;
+          border-radius:50%;
+          margin:20px 0;
+        "
+      >
+
+      <br>
+
+      <button onclick="saveEditedMember('${memberName}', '${categoryName}')">
+        Save Changes
+      </button>
+
+      <br><br>
+
+      <button onclick="openCategory('${categoryName}')">
+        Cancel
+      </button>
+
+    </div>
+  `;
 }
     
    function deleteMember(memberName, categoryName) {
