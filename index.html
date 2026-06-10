@@ -801,19 +801,30 @@ if (categoryName === "Family") {
 
       <br>
 
-      <input
-        id="editMemberRelationship"
-        value="${member.relationship}"
-        style="
-          width:100%;
-          max-width:400px;
-          padding:15px;
-          border-radius:12px;
-          border:1px solid #ccc;
-          font-size:18px;
-          margin-bottom:20px;
-        "
-      >
+     <select
+  id="editMemberRelationship"
+  style="
+    width:100%;
+    max-width:400px;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:18px;
+    margin-bottom:20px;
+  "
+>
+  <option ${member.relationship==="Grandmother"?"selected":""}>Grandmother</option>
+  <option ${member.relationship==="Grandfather"?"selected":""}>Grandfather</option>
+  <option ${member.relationship==="Mother"?"selected":""}>Mother</option>
+  <option ${member.relationship==="Father"?"selected":""}>Father</option>
+  <option ${member.relationship==="Daughter"?"selected":""}>Daughter</option>
+  <option ${member.relationship==="Son"?"selected":""}>Son</option>
+  <option ${member.relationship==="Brother"?"selected":""}>Brother</option>
+  <option ${member.relationship==="Sister"?"selected":""}>Sister</option>
+  <option ${member.relationship==="Partner"?"selected":""}>Partner</option>
+  <option ${member.relationship==="Friend"?"selected":""}>Friend</option>
+  <option ${member.relationship==="Pet"?"selected":""}>Pet</option>
+</select>
 
       <br>
 
