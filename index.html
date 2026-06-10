@@ -182,6 +182,19 @@ function showMap() {
         ${tribeName}
       </h1>
 
+<button onclick="showOwnerProfile()" style="
+  margin-bottom:20px;
+  background:#d8c8af;
+  color:#2e2721;
+  border:none;
+  border-radius:999px;
+  padding:10px 20px;
+  font-family:Georgia, serif;
+  cursor:pointer;
+">
+  Edit My Profile
+</button>
+
       <p style="font-size:20px; color:#6f6255; margin-bottom:40px;">
         Your tribe map is beginning.
       </p>
@@ -1086,12 +1099,18 @@ const savedName =
 const savedMembers =
   localStorage.getItem("tribemap_members");
 
+    const savedOwner =
+  localStorage.getItem("tribemap_owner");
+
 if (savedName) {
   currentTribeName = savedName;
 }
 
 if (savedMembers) {
   members = JSON.parse(savedMembers);
+
+  if (savedOwner) {
+  tribeOwner = JSON.parse(savedOwner);
 }
     
 </script>
