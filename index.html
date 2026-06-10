@@ -508,6 +508,9 @@ function saveMember(categoryName) {
   const relationship =
     document.getElementById("memberRelationship").value.trim();
 
+const energy =
+  document.getElementById("memberEnergy").value;
+  
   const avatar =
     document.getElementById("memberAvatar").value;
 
@@ -529,6 +532,7 @@ function saveMember(categoryName) {
         name: memberName,
         relationship: relationship,
         category: categoryName,
+        energy: energy,
         avatar: avatar,
         photo: e.target.result
       });
@@ -546,6 +550,7 @@ function saveMember(categoryName) {
       name: memberName,
       relationship: relationship,
       category: categoryName,
+      energy: energy,
       avatar: avatar,
       photo: null
     });
