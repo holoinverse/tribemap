@@ -843,6 +843,29 @@ if (categoryName === "Family") {
     </div>
   `;
 }
+
+function saveEditedMember(oldName, categoryName){
+
+  const member =
+    members.find(m =>
+      m.name === oldName &&
+      m.category === categoryName
+    );
+
+  if(!member){
+    return;
+  }
+
+  member.name =
+    document.getElementById("editMemberName").value.trim();
+
+  member.relationship =
+    document.getElementById("editMemberRelationship").value.trim();
+
+  saveData();
+
+  openCategory(categoryName);
+}
     
    function deleteMember(memberName, categoryName) {
   members = members.filter(member => {
