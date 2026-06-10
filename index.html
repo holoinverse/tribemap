@@ -208,22 +208,40 @@ function showMap() {
       ">
 
         <div style="
-          position:absolute;
-          left:50%;
-          top:50%;
-          transform:translate(-50%,-50%);
-          width:130px;
-          height:130px;
-          border-radius:50%;
-          background:#2e2721;
-          color:#fffaf1;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          font-size:22px;
-        ">
-          YOU
-        </div>
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  background:#2e2721;
+  color:#fffaf1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+">
+
+${tribeOwner.photo ? `
+  <img
+    src="${tribeOwner.photo}"
+    style="
+      width:60px;
+      height:60px;
+      object-fit:cover;
+      border-radius:50%;
+      margin-bottom:6px;
+    "
+  >
+` : ""}
+
+<div>
+  ${tribeOwner.name || "YOU"}
+</div>
+
+</div>
 
 ${categoryNode("👨‍👩‍👧", "Family", "50%", "5%")}
 ${categoryNode("👥", "Friends", "78%", "15%")}
