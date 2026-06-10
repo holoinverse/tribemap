@@ -752,7 +752,7 @@ if (categoryName === "Family") {
   `;
 }
 
-    function editMember(memberName, categoryName){
+   function editMember(memberName, categoryName){
 
   const member =
     members.find(m =>
@@ -771,7 +771,15 @@ if (categoryName === "Family") {
     return;
   }
 
+  const newRelationship =
+    prompt("Edit relationship:", member.relationship);
+
+  if(!newRelationship){
+    return;
+  }
+
   member.name = newName;
+  member.relationship = newRelationship;
 
   saveData();
 
