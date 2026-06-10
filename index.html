@@ -894,9 +894,12 @@ function saveEditedMember(oldName, categoryName){
   member.relationship =
     document.getElementById("editMemberRelationship").value.trim();
 
+member.category =
+  document.getElementById("editMemberCategory").value;
+  
   saveData();
 
-  openCategory(categoryName);
+  openCategory(member.category);
 }
     
    function deleteMember(memberName, categoryName) {
