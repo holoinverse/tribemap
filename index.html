@@ -659,6 +659,17 @@ if (categoryMembers.length === 0) {
   }
 </div>
 
+<div style="
+  font-size:14px;
+  margin-top:6px;
+">
+  ${
+    member.proximity === "Very Close" ? "🔥 Very Close" :
+    member.proximity === "Distant" ? "🌙 Distant" :
+    "🤝 Close"
+  }
+</div>
+
         <br><br>
 
 <button onclick="showEditMember('${member.name}', '${member.category}')" style="
