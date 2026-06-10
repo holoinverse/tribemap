@@ -220,9 +220,34 @@ ${categoryNode("🌱", "Community", "22%", "15%")}
   `;
 }
 
+function getCategoryAvatars(label){
+
+  const categoryMembers =
+    members.filter(member => member.category === label);
+
+  return categoryMembers
+    .slice(0,3)
+    .map(member => `
+      <img
+        src="${member.avatar}"
+        style="
+          width:24px;
+          height:24px;
+          border-radius:50%;
+          background:#d8cdbc;
+          padding:2px;
+        "
+      >
+    `)
+    .join("");
+}
+    
 function categoryNode(icon, label, left, top) {
 const count =
   members.filter(member => member.category === label).length;
+
+const avatars =
+  getCategoryAvatars(label);
   
   return `
     <button onclick="openCategory('${label}')" style="
@@ -245,8 +270,18 @@ const count =
       font-family:Georgia, serif;
     ">
       <div style="font-size:30px;">${icon}</div>
+      
      <div style="font-size:16px;">
   ${label} (${count})
+</div>
+
+<div style="
+  display:flex;
+  gap:4px;
+  margin-top:6px;
+  justify-content:center;
+">
+  ${avatars}
 </div>
 
     </button>
