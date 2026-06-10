@@ -417,10 +417,6 @@ function showAddMember(categoryName) {
   Choose an avatar
 </p>
 
-<p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
-  Choose an avatar
-</p>
-
 <input id="memberAvatar" type="hidden" value="avatar-woman-short.png">
 
 <div class="avatar-grid">
@@ -603,6 +599,19 @@ if (categoryMembers.length === 0) {
         <div style="font-size:16px; color:#6f6255; margin-top:6px;">
           ${member.relationship}
         </div>
+
+<div style="
+  font-size:14px;
+  margin-top:8px;
+">
+  ${
+    member.energy === "Very Supportive" ? "🟢 Very Supportive" :
+    member.energy === "Supportive" ? "🟢 Supportive" :
+    member.energy === "Draining" ? "🔴 Draining" :
+    member.energy === "Very Draining" ? "🔴 Very Draining" :
+    "⚪ Neutral"
+  }
+</div>
 
         <br><br>
 
