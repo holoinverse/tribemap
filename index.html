@@ -414,6 +414,28 @@ function showAddMember(categoryName) {
 <br><br>
 
 <p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
+  Relationship Proximity
+</p>
+
+<select
+  id="memberProximity"
+  style="
+    width:100%;
+    max-width:400px;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:18px;
+  "
+>
+  <option value="Very Close">Very Close</option>
+  <option value="Close" selected>Close</option>
+  <option value="Distant">Distant</option>
+</select>
+
+<br><br>
+
+<p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
   Choose an avatar
 </p>
 
@@ -520,6 +542,9 @@ function saveMember(categoryName) {
 
 const energy =
   document.getElementById("memberEnergy").value;
+
+const proximity =
+  document.getElementById("memberProximity").value;
   
   const avatar =
     document.getElementById("memberAvatar").value;
@@ -538,14 +563,17 @@ const energy =
 
     reader.onload = function(e) {
 
-      members.push({
-        name: memberName,
-        relationship: relationship,
-        category: categoryName,
-        energy: energy,
-        avatar: avatar,
-        photo: e.target.result
-      });
+     members.push({
+  name: memberName,
+  relationship: relationship,
+  category: categoryName,
+  energy: energy,
+  proximity: proximity,
+  avatar: avatar,
+  photo: e.target.result,
+  x: null,
+  y: null
+});
 
       saveData();
       openCategory(categoryName);
@@ -557,13 +585,16 @@ const energy =
   } else {
 
     members.push({
-      name: memberName,
-      relationship: relationship,
-      category: categoryName,
-      energy: energy,
-      avatar: avatar,
-      photo: null
-    });
+  name: memberName,
+  relationship: relationship,
+  category: categoryName,
+  energy: energy,
+  proximity: proximity,
+  avatar: avatar,
+  photo: null,
+  x: null,
+  y: null
+});
 
     saveData();
     openCategory(categoryName);
@@ -919,6 +950,29 @@ if (categoryName === "Family") {
 
 <br>
 
+<p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
+  Relationship Proximity
+</p>
+
+<select
+  id="editMemberProximity"
+  style="
+    width:100%;
+    max-width:400px;
+    padding:15px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:18px;
+    margin-bottom:20px;
+  "
+>
+  <option value="Very Close">Very Close</option>
+  <option value="Close">Close</option>
+  <option value="Distant">Distant</option>
+</select>
+
+<br>
+
       <img
         src="${member.photo ? member.photo : member.avatar}"
         style="
@@ -953,6 +1007,9 @@ document.getElementById("editMemberCategory").value =
 
 document.getElementById("editMemberEnergy").value =
   member.energy || "Neutral";
+
+document.getElementById("editMemberProximity").value =
+  member.proximity || "Close";
      
 }
 
@@ -979,6 +1036,9 @@ member.category =
 
 member.energy =
   document.getElementById("editMemberEnergy").value;
+
+member.proximity =
+  document.getElementById("editMemberProximity").value;
   
   saveData();
 
