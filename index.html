@@ -221,6 +221,9 @@ ${categoryNode("🌱", "Community", "22%", "15%")}
 }
 
 function categoryNode(icon, label, left, top) {
+const count =
+  members.filter(member => member.category === label).length;
+  
   return `
     <button onclick="openCategory('${label}')" style="
       position:absolute;
@@ -242,7 +245,10 @@ function categoryNode(icon, label, left, top) {
       font-family:Georgia, serif;
     ">
       <div style="font-size:30px;">${icon}</div>
-      <div style="font-size:16px;">${label}</div>
+     <div style="font-size:16px;">
+  ${label} (${count})
+</div>
+
     </button>
   `;
 }
