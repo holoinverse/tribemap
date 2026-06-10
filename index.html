@@ -801,7 +801,7 @@ if (categoryName === "Family") {
 
       <br>
 
-     <select
+    <select
   id="editMemberRelationship"
   style="
     width:100%;
@@ -813,26 +813,7 @@ if (categoryName === "Family") {
     margin-bottom:20px;
   "
 >
-<option ${member.relationship==="Grandmother"?"selected":""}>Grandmother</option>
-<option ${member.relationship==="Grandfather"?"selected":""}>Grandfather</option>
-<option ${member.relationship==="Mother"?"selected":""}>Mother</option>
-<option ${member.relationship==="Father"?"selected":""}>Father</option>
-<option ${member.relationship==="Daughter"?"selected":""}>Daughter</option>
-<option ${member.relationship==="Son"?"selected":""}>Son</option>
-<option ${member.relationship==="Sister"?"selected":""}>Sister</option>
-<option ${member.relationship==="Brother"?"selected":""}>Brother</option>
-<option ${member.relationship==="Half Sister"?"selected":""}>Half Sister</option>
-<option ${member.relationship==="Half Brother"?"selected":""}>Half Brother</option>
-<option ${member.relationship==="Stepmother"?"selected":""}>Stepmother</option>
-<option ${member.relationship==="Stepfather"?"selected":""}>Stepfather</option>
-<option ${member.relationship==="Aunt"?"selected":""}>Aunt</option>
-<option ${member.relationship==="Uncle"?"selected":""}>Uncle</option>
-<option ${member.relationship==="Cousin"?"selected":""}>Cousin</option>
-<option ${member.relationship==="Niece"?"selected":""}>Niece</option>
-<option ${member.relationship==="Nephew"?"selected":""}>Nephew</option>
-<option ${member.relationship==="Granddaughter"?"selected":""}>Granddaughter</option>
-<option ${member.relationship==="Grandson"?"selected":""}>Grandson</option>
-<option ${member.relationship==="Family Member"?"selected":""}>Family Member</option>
+  ${getRelationshipOptions(categoryName)}
 </select>
 
       <br>
@@ -862,6 +843,10 @@ if (categoryName === "Family") {
 
     </div>
   `;
+     
+document.getElementById("editMemberRelationship").value =
+  member.relationship;
+     
 }
 
 function saveEditedMember(oldName, categoryName){
