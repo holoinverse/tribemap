@@ -1077,6 +1077,7 @@ openCategory(categoryName);
 function saveData() {
   localStorage.setItem("tribemap_name", currentTribeName);
   localStorage.setItem("tribemap_members", JSON.stringify(members));
+  localStorage.setItem("tribemap_owner", JSON.stringify(tribeOwner));
 }
 
 const savedName =
