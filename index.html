@@ -229,7 +229,7 @@ function getCategoryAvatars(label){
     .slice(0,3)
     .map(member => `
       <img
-        src="${member.avatar}"
+src="${member.photo ? member.photo : member.avatar}"
         style="
           width:24px;
           height:24px;
@@ -477,6 +477,7 @@ function selectAvatar(fileName, button){
 }
     
 function saveMember(categoryName) {
+
   const memberName =
     document.getElementById("memberName").value.trim();
 
@@ -484,24 +485,51 @@ function saveMember(categoryName) {
     document.getElementById("memberRelationship").value.trim();
 
   const avatar =
-  document.getElementById("memberAvatar").value;
+    document.getElementById("memberAvatar").value;
+
+  const photoInput =
+    document.getElementById("memberPhoto");
 
   if (!memberName || !relationship) {
     alert("Please add name and relationship.");
     return;
   }
 
-  members.push({
-  name: memberName,
-  relationship: relationship,
-  category: categoryName,
-  avatar: avatar
-});
+  if (photoInput.files.length > 0) {
 
-saveData();
+    const reader = new FileReader();
 
-openCategory(categoryName);
-  
+    reader.onload = function(e) {
+
+      members.push({
+        name: memberName,
+        relationship: relationship,
+        category: categoryName,
+        avatar: avatar,
+        photo: e.target.result
+      });
+
+      saveData();
+      openCategory(categoryName);
+
+    };
+
+    reader.readAsDataURL(photoInput.files[0]);
+
+  } else {
+
+    members.push({
+      name: memberName,
+      relationship: relationship,
+      category: categoryName,
+      avatar: avatar,
+      photo: null
+    });
+
+    saveData();
+    openCategory(categoryName);
+
+  }
 }
     
 function renderMembers(categoryName) {
@@ -534,11 +562,12 @@ if (categoryMembers.length === 0) {
         box-shadow:0 12px 30px rgba(46,39,33,0.10);
       ">
         <img
-  src="${member.avatar}"
+  src="${member.photo ? member.photo : member.avatar}"
   style="
     width:90px;
     height:90px;
-    object-fit:contain;
+    object-fit:cover;
+    border-radius:50%;
     margin-bottom:10px;
   "
 >
