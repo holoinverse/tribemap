@@ -1247,6 +1247,10 @@ openCategory(categoryName);
      
 }
 
+function showAddInteraction(memberName, categoryName) {
+  alert("Add Interaction: " + memberName);
+}
+    
 function saveData() {
   localStorage.setItem("tribemap_name", currentTribeName);
   localStorage.setItem("tribemap_members", JSON.stringify(members));
