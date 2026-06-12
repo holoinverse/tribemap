@@ -842,30 +842,6 @@ if (categoryMembers.length === 0) {
 ">
   Interactions: ${member.interactions ? member.interactions.length : 0}
 
-<div style="
-  font-size:12px;
-  color:#6f6255;
-  margin-top:8px;
-  line-height:1.4;
-">
-  ${
-    member.interactions && member.interactions.length > 0
-      ? member.interactions.slice(-3).reverse().map(interaction => `
-        <div>
-          ${
-            interaction.outcome === "better" ? "😊 Better" :
-            interaction.outcome === "same" ? "😐 Same" :
-            "😔 Worse"
-          }
-          <br>
-          ${interaction.date}
-        </div>
-      `).join("")
-      : ""
-  }
-  
-</div>
-
         <br><br>
 
 <button onclick="showEditMember('${member.name}', '${member.category}')" style="
