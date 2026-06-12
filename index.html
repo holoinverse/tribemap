@@ -419,14 +419,14 @@ function openCategory(categoryName) {
       box-sizing:border-box;
     ">
 
-      <h1 style="font-size:54px; margin-bottom:20px;">
+     <h1 style="font-size:44px; margin-bottom:20px;">
         Edit My Profile
       </h1>
 
       <input
         id="ownerName"
-        value="${tribeOwner.name || "YOU"}"
-        placeholder="YOU"
+       value="${tribeOwner.name || ""}"
+       placeholder="Enter your name"
         style="
           width:100%;
           max-width:400px;
@@ -434,14 +434,14 @@ function openCategory(categoryName) {
           border-radius:12px;
           border:1px solid #ccc;
           font-size:18px;
-          margin-bottom:20px;
+          margin-bottom:35px;
         "
       >
 
       <br>
 
       <p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
-        Upload a photo (optional)
+        Add your photo (optional)
       </p>
 
       <input
