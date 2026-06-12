@@ -1310,6 +1310,7 @@ function showAddInteraction(memberName, categoryName) {
       <input
         id="interactionDate"
         type="date"
+        value="${new Date().toISOString().split('T')[0]}"
         style="
           width:100%;
           max-width:400px;
@@ -1387,6 +1388,10 @@ function saveInteraction(memberName, categoryName) {
     return;
   }
 
+console.log(
+  document.getElementById("interactionDate").value
+);
+  
   const interaction = {
     date: document.getElementById("interactionDate").value,
     outcome: document.getElementById("interactionOutcome").value,
