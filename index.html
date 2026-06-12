@@ -1403,6 +1403,94 @@ function saveInteraction(memberName, categoryName) {
 
   openCategory(categoryName);
 }
+
+function showInteractionHistory(memberName, categoryName){
+
+  const member =
+    members.find(m =>
+      m.name === memberName &&
+      m.category === categoryName
+    );
+
+  if(!member){
+    return;
+  }
+
+  document.body.innerHTML = `
+    <div style="
+      min-height:100vh;
+      background:#f3eadb;
+      font-family:Georgia, serif;
+      color:#2e2721;
+      text-align:center;
+      padding:40px;
+      box-sizing:border-box;
+    ">
+
+      <button onclick="openCategory('${categoryName}')">
+        ← Back
+      </button>
+
+      <h1>
+        Interaction History
+      </h1>
+
+      <h3>
+        ${member.name}
+      </h3>
+
+      ${
+        member.interactions && member.interactions.length > 0
+        ?
+        member.interactions.map((interaction,index)=>`
+
+          <div style="
+            max-width:500px;
+            margin:20px auto;
+            padding:20px;
+            background:white;
+            border-radius:18px;
+            border:1px solid #d8c8af;
+          ">
+
+            <strong>${interaction.date}</strong>
+
+            <br><br>
+
+            ${
+              interaction.outcome === "better"
+                ? "😊 Better"
+                : interaction.outcome === "same"
+                ? "😐 Same"
+                : "😔 Worse"
+            }
+
+            <br><br>
+
+            ${interaction.notes || ""}
+
+            <br><br>
+
+            <button onclick="
+              deleteInteraction(
+                '${member.name}',
+                '${member.category}',
+                ${index}
+              )
+            ">
+              Delete
+            </button>
+
+          </div>
+
+        `).join("")
+        :
+        "<p>No interactions yet.</p>"
+      }
+
+    </div>
+  `;
+}
     
 function saveData() {
   localStorage.setItem("tribemap_name", currentTribeName);
