@@ -1502,6 +1502,79 @@ function showInteractionHistory(memberName, categoryName){
     </div>
   `;
 }
+
+function showEditInteraction(memberName, categoryName, interactionIndex) {
+  const member = members.find(m =>
+    m.name === memberName &&
+    m.category === categoryName
+  );
+
+  if (!member || !member.interactions || !member.interactions[interactionIndex]) {
+    return;
+  }
+
+  const interaction = member.interactions[interactionIndex];
+
+  document.body.innerHTML = `
+    <div style="
+      min-height:100vh;
+      background:#f3eadb;
+      font-family:Georgia, serif;
+      color:#2e2721;
+      text-align:center;
+      padding:40px;
+      box-sizing:border-box;
+    ">
+
+      <button onclick="showInteractionHistory('${memberName}', '${categoryName}')">
+        ← Back
+      </button>
+
+      <h1 style="font-size:42px; margin-bottom:10px;">
+        Edit Interaction
+      </h1>
+
+      <p style="font-size:20px; color:#6f6255;">
+        ${memberName}
+      </p>
+
+      <input
+        id="editInteractionDate"
+        type="date"
+        value="${interaction.date}"
+        style="width:100%; max-width:400px; padding:15px; border-radius:12px; border:1px solid #ccc; font-size:18px; margin-bottom:20px;"
+      >
+
+      <br>
+
+      <select
+        id="editInteractionOutcome"
+        style="width:100%; max-width:400px; padding:15px; border-radius:12px; border:1px solid #ccc; font-size:18px; margin-bottom:20px;"
+      >
+        <option value="better">😊 Better</option>
+        <option value="same">😐 Same</option>
+        <option value="worse">😔 Worse</option>
+      </select>
+
+      <br>
+
+      <textarea
+        id="editInteractionNotes"
+        placeholder="Notes (optional)"
+        style="width:100%; max-width:400px; height:120px; padding:15px; border-radius:12px; border:1px solid #ccc; font-size:18px; font-family:Georgia, serif; margin-bottom:20px;"
+      >${interaction.notes || ""}</textarea>
+
+      <br>
+
+      <button onclick="saveEditedInteraction('${memberName}', '${categoryName}', ${interactionIndex})">
+        Save Changes
+      </button>
+
+    </div>
+  `;
+
+  document.getElementById("editInteractionOutcome").value = interaction.outcome;
+}
     
 function saveData() {
   localStorage.setItem("tribemap_name", currentTribeName);
