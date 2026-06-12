@@ -1253,7 +1253,126 @@ openCategory(categoryName);
 }
 
 function showAddInteraction(memberName, categoryName) {
-  alert("Add Interaction: " + memberName);
+  document.body.innerHTML = `
+    <div style="
+      min-height:100vh;
+      background:#f3eadb;
+      font-family:Georgia, serif;
+      color:#2e2721;
+      text-align:center;
+      padding:40px;
+      box-sizing:border-box;
+    ">
+
+      <button onclick="openCategory('${categoryName}')" style="
+        margin-bottom:30px;
+        background:#2e2721;
+        color:#fffaf1;
+        border:none;
+        border-radius:999px;
+        padding:12px 22px;
+        font-family:Georgia, serif;
+        cursor:pointer;
+      ">
+        ← Back
+      </button>
+
+      <h1 style="font-size:42px; margin-bottom:10px;">
+        Add Interaction
+      </h1>
+
+      <p style="font-size:20px; color:#6f6255;">
+        ${memberName}
+      </p>
+
+      <input
+        id="interactionDate"
+        type="date"
+        style="
+          width:100%;
+          max-width:400px;
+          padding:15px;
+          border-radius:12px;
+          border:1px solid #ccc;
+          font-size:18px;
+          margin-bottom:20px;
+        "
+      >
+
+      <br>
+
+      <select
+        id="interactionOutcome"
+        style="
+          width:100%;
+          max-width:400px;
+          padding:15px;
+          border-radius:12px;
+          border:1px solid #ccc;
+          font-size:18px;
+          margin-bottom:20px;
+        "
+      >
+        <option value="Better">😊 Better</option>
+        <option value="Same">😐 Same</option>
+        <option value="Worse">😞 Worse</option>
+      </select>
+
+      <br>
+
+      <textarea
+        id="interactionNotes"
+        placeholder="Notes (optional)"
+        style="
+          width:100%;
+          max-width:400px;
+          height:120px;
+          padding:15px;
+          border-radius:12px;
+          border:1px solid #ccc;
+          font-size:18px;
+          font-family:Georgia, serif;
+          margin-bottom:20px;
+        "
+      ></textarea>
+
+      <br>
+
+      <button onclick="saveInteraction('${memberName}', '${categoryName}')">
+        Save Interaction
+      </button>
+
+    </div>
+  `;
+}
+
+function saveInteraction(memberName, categoryName) {
+
+  const member =
+    members.find(m =>
+      m.name === memberName &&
+      m.category === categoryName
+    );
+
+  if (!member) {
+    return;
+  }
+
+  const interaction = {
+    date: document.getElementById("interactionDate").value,
+    outcome: document.getElementById("interactionOutcome").value,
+    notes: document.getElementById("interactionNotes").value.trim()
+  };
+
+  if (!member.interactions) {
+    member.interactions = [];
+  }
+
+  member.interactions.push(interaction);
+
+  saveData();
+
+  openCategory(categoryName);
 }
     
 function saveData() {
