@@ -1575,6 +1575,27 @@ function showEditInteraction(memberName, categoryName, interactionIndex) {
 
   document.getElementById("editInteractionOutcome").value = interaction.outcome;
 }
+
+function saveEditedInteraction(memberName, categoryName, interactionIndex) {
+  const member = members.find(m =>
+    m.name === memberName &&
+    m.category === categoryName
+  );
+
+  if (!member || !member.interactions || !member.interactions[interactionIndex]) {
+    return;
+  }
+
+  member.interactions[interactionIndex] = {
+    date: document.getElementById("editInteractionDate").value,
+    outcome: document.getElementById("editInteractionOutcome").value,
+    notes: document.getElementById("editInteractionNotes").value.trim()
+  };
+
+  saveData();
+
+  showInteractionHistory(memberName, categoryName);
+}
     
 function saveData() {
   localStorage.setItem("tribemap_name", currentTribeName);
