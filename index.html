@@ -309,81 +309,21 @@ function renderVisibleVillageMembers() {
 
   const visibleMembers = getVisibleVillageMembers();
 
+  const positions = [
+    { left: "50%", top: "30%" },
+    { left: "70%", top: "45%" },
+    { left: "70%", top: "70%" },
+    { left: "50%", top: "82%" },
+    { left: "30%", top: "70%" },
+    { left: "30%", top: "45%" },
+    { left: "50%", top: "18%" }
+  ];
+
   return visibleMembers.map((member, index) => {
 
-let position;
+    const position =
+      positions[index % positions.length];
 
-if (member.category === "Family") {
-  const positions = [
-    { left: "48%", top: "28%" },
-    { left: "52%", top: "28%" },
-    { left: "50%", top: "34%" }
-  ];
-
- position =
-  positions[index % positions.length];
-
-}
-
-else if (member.category === "Friends") {
-
-  const friendPositions = [
-    { left: "72%", top: "42%" },
-    { left: "68%", top: "48%" },
-    { left: "76%", top: "48%" }
-  ];
-
-  position =
-    friendPositions[index % friendPositions.length];
-
-}
-
-else if (member.category === "Community") {
-
-  const communityPositions = [
-    { left: "28%", top: "42%" },
-    { left: "24%", top: "48%" },
-    { left: "32%", top: "48%" }
-  ];
-
-  position =
-    communityPositions[index % communityPositions.length];
-
-}
-
-else if (member.category === "Pets") {
-
-  const petPositions = [
-    { left: "28%", top: "72%" },
-    { left: "24%", top: "78%" }
-  ];
-
-  position =
-    petPositions[index % petPositions.length];
-
-}
-
-else if (member.category === "Studies") {
-
-  const studyPositions = [
-    { left: "50%", top: "82%" },
-    { left: "46%", top: "88%" }
-  ];
-
-  position =
-    studyPositions[index % studyPositions.length];
-
-}
-
-else {
-
-  position = {
-    left: "50%",
-    top: "60%"
-  };
-
-}
-    
     return `
       <div style="
         position:absolute;
@@ -393,36 +333,38 @@ else {
         z-index:4;
         text-align:center;
       ">
+
         <img
           src="${member.photo ? member.photo : member.avatar}"
           title="${member.name}"
           style="
-            width:46px;
-            height:46px;
+            width:60px;
+            height:60px;
             object-fit:cover;
             border-radius:50%;
             background:#fffaf1;
-            border:3px solid #c9a96e;
+            border:4px solid #c9a96e;
             box-shadow:0 6px 16px rgba(46,39,33,0.25);
           "
         >
 
         <div style="
-          font-size:11px;
+          font-size:12px;
           color:#2e2721;
-          margin-top:3px;
-          background:rgba(255,250,241,0.85);
+          margin-top:4px;
+          background:rgba(255,250,241,0.9);
           border-radius:999px;
-          padding:2px 6px;
+          padding:2px 8px;
           white-space:nowrap;
         ">
           ${member.name}
         </div>
+
       </div>
     `;
+
   }).join("");
 }
-    
 function categoryNode(icon, label, left, top) {
 const count =
   members.filter(member => member.category === label).length;
