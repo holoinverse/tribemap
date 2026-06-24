@@ -314,15 +314,14 @@ function renderVisibleVillageMembers() {
 let position;
 
 if (member.category === "Family") {
-
-  const familyPositions = [
-    { left: "50%", top: "32%" },
-    { left: "48%", top: "40%" },
-    { left: "52%", top: "40%" }
+  const positions = [
+    { left: "48%", top: "28%" },
+    { left: "52%", top: "28%" },
+    { left: "50%", top: "34%" }
   ];
 
-  position =
-    familyPositions[index % familyPositions.length];
+ position =
+  positions[index % positions.length];
 
 }
 
