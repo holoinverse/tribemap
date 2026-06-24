@@ -7,6 +7,19 @@
   <title>TribeMap</title>
 
 <style>
+  @keyframes villageWalk {
+  0% {
+    transform:translate(-50%,-50%) translateY(0px);
+  }
+
+  50% {
+    transform:translate(-50%,-50%) translateY(-8px);
+  }
+
+  100% {
+    transform:translate(-50%,-50%) translateY(0px);
+  }
+}
 
 .avatar-grid{
   display:grid;
@@ -341,13 +354,15 @@ function renderVisibleVillageMembers() {
 
     return `
       <div style="
-        position:absolute;
-        left:${position.left};
-        top:${position.top};
-        transform:translate(-50%,-50%);
-        z-index:4;
-        text-align:center;
-      ">
+  position:absolute;
+  left:${position.left};
+  top:${position.top};
+  transform:translate(-50%,-50%);
+  z-index:4;
+  text-align:center;
+  animation:villageWalk 3s ease-in-out infinite;
+  animation-delay:${index * 0.35}s;
+">
 
         <img
           src="${member.photo ? member.photo : member.avatar}"
