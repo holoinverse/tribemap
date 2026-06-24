@@ -276,6 +276,7 @@ ${categoryNode("🎨", "Projects", "50%", "95%")}
 ${categoryNode("🎓", "Studies", "22%", "85%")}
 ${categoryNode("🐕", "Pets", "10%", "50%")}
 ${categoryNode("🌱", "Community", "22%", "15%")}
+${renderVisibleVillageMembers()}
 
       </div>
     </div>
@@ -302,6 +303,63 @@ src="${member.photo ? member.photo : member.avatar}"
       >
     `)
     .join("");
+}
+
+function renderVisibleVillageMembers() {
+
+  const visibleMembers = getVisibleVillageMembers();
+
+  const positions = [
+    { left: "48%", top: "30%" },
+    { left: "60%", top: "38%" },
+    { left: "63%", top: "58%" },
+    { left: "50%", top: "70%" },
+    { left: "37%", top: "58%" },
+    { left: "36%", top: "38%" },
+    { left: "50%", top: "22%" }
+  ];
+
+  return visibleMembers.map((member, index) => {
+
+    const position = positions[index];
+
+    return `
+      <div style="
+        position:absolute;
+        left:${position.left};
+        top:${position.top};
+        transform:translate(-50%,-50%);
+        z-index:4;
+        text-align:center;
+      ">
+        <img
+          src="${member.photo ? member.photo : member.avatar}"
+          title="${member.name}"
+          style="
+            width:46px;
+            height:46px;
+            object-fit:cover;
+            border-radius:50%;
+            background:#fffaf1;
+            border:3px solid #c9a96e;
+            box-shadow:0 6px 16px rgba(46,39,33,0.25);
+          "
+        >
+
+        <div style="
+          font-size:11px;
+          color:#2e2721;
+          margin-top:3px;
+          background:rgba(255,250,241,0.85);
+          border-radius:999px;
+          padding:2px 6px;
+          white-space:nowrap;
+        ">
+          ${member.name}
+        </div>
+      </div>
+    `;
+  }).join("");
 }
     
 function categoryNode(icon, label, left, top) {
@@ -601,6 +659,53 @@ function getRelationshipHealth(member) {
   }
 
   return "🔴 Critical";
+}
+
+function getActivityScore(member) {
+
+  let score = 0;
+
+  const interactions =
+    member.interactions ? member.interactions.length : 0;
+
+  score += interactions * 10;
+
+  if (member.proximity === "Very Close") score += 30;
+  if (member.proximity === "Close") score += 15;
+  if (member.proximity === "Distant") score += 0;
+
+  if (member.interactions && member.interactions.length > 0) {
+
+    const validInteractions =
+      member.interactions.filter(i => i.date);
+
+    if (validInteractions.length > 0) {
+
+      const sorted = [...validInteractions].sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
+      );
+
+      const lastDate = new Date(sorted[0].date);
+      const today = new Date();
+
+      const daysSince =
+        Math.floor((today - lastDate) / (1000 * 60 * 60 * 24));
+
+      if (daysSince <= 7) score += 30;
+      else if (daysSince <= 30) score += 20;
+      else if (daysSince <= 90) score += 10;
+    }
+  }
+
+  return score;
+}
+
+function getVisibleVillageMembers() {
+
+  return [...members]
+    .filter(member => member.interactions && member.interactions.length > 0)
+    .sort((a, b) => getActivityScore(b) - getActivityScore(a))
+    .slice(0, 7);
 }
     
 function getCategoryDashboard(categoryName) {
