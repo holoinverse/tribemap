@@ -98,7 +98,21 @@
     
 let currentTribeName = "";
 let members = [];
+const preloadImages = [
+  "assets/hut.png",
+  "assets/tribe-fire.png",
+  "avatar-woman-short.png",
+  "avatar-woman-long.png",
+  "avatar-boy.png",
+  "avatar-girl.png",
+  "avatar-paw.png"
+];
 
+preloadImages.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
+    
     let tribeOwner = {
   name: "YOU",
   avatar: null,
