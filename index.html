@@ -654,11 +654,22 @@ function getCategoryDashboard(categoryName) {
       color:#6f6255;
       line-height:1.8;
     ">
+    
+  <div style="
+  font-size:20px;
+  font-weight:bold;
+  margin-bottom:12px;
+  color:#2e2721;
+">
+  TRIBE OVERVIEW
+</div>
+
       🟢 Supportive: ${supportive}<br>
       ⚪ Neutral: ${neutral}<br>
       🔴 Draining: ${draining}<br>
       ⭐ Average Score: ${averageScore}%
     </div>
+    
   `;
 }
     
@@ -1011,7 +1022,7 @@ ${
   color:#6f5f50;
   margin-bottom:10px;
 ">
-  Last Interaction: ${getLastInteraction(member)}
+  Last: ${getLastInteraction(member)}
 </div>
 
 <div style="
