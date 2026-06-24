@@ -570,6 +570,39 @@ function getSupportScore(member) {
   return Math.round((score / maxPossible) * 100);
 }
 
+function getRelationshipHealth(member) {
+
+  const score = getSupportScore(member);
+  const trend = getRelationshipTrend(member);
+  const energy = calculateRelationshipEnergy(member);
+
+  if (
+    score >= 85 &&
+    trend !== "↓ Drifting" &&
+    energy !== "Draining" &&
+    energy !== "Very Draining"
+  ) {
+    return "🌟 Excellent";
+  }
+
+  if (
+    score >= 70 &&
+    trend !== "↓ Drifting"
+  ) {
+    return "🟢 Healthy";
+  }
+
+  if (score >= 50) {
+    return "🟡 Uncertain";
+  }
+
+  if (score >= 30) {
+    return "🟠 Strained";
+  }
+
+  return "🔴 Critical";
+}
+    
 function getCategoryDashboard(categoryName) {
 
   const categoryMembers =
@@ -1048,6 +1081,15 @@ ${
   margin-bottom:10px;
 ">
   Support Score: ${getSupportScore(member)}%
+</div>
+
+<div style="
+  font-size:13px;
+  color:#6f5f50;
+  margin-top:6px;
+  margin-bottom:10px;
+">
+  Health: ${getRelationshipHealth(member)}
 </div>
         <br><br>
 
