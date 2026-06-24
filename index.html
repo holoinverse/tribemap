@@ -523,6 +523,30 @@ function getLastInteraction(member) {
   return formatInteractionDate(sorted[0].date);
 }
 
+function getRelationshipTrend(member) {
+  if (!member.interactions || member.interactions.length < 2) {
+    return "→ Stable";
+  }
+
+  const sorted = [...member.interactions].sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
+
+  const recent = sorted.slice(0, 5);
+
+  let score = 0;
+
+  recent.forEach(interaction => {
+    if (interaction.outcome === "better") score += 1;
+    if (interaction.outcome === "worse") score -= 1;
+  });
+
+  if (score >= 2) return "↑ Improving";
+  if (score <= -2) return "↓ Drifting";
+
+  return "→ Stable";
+}
+    
 function showAddMember(categoryName) {
   document.body.innerHTML = `
     <div style="
