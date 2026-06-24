@@ -628,6 +628,57 @@ function getCategoryDashboard(categoryName) {
     </div>
   `;
 }
+
+function getCategoryDashboard(categoryName) {
+
+  const categoryMembers =
+    members.filter(member => member.category === categoryName);
+
+  let supportive = 0;
+  let neutral = 0;
+  let draining = 0;
+
+  let totalScore = 0;
+
+  categoryMembers.forEach(member => {
+
+    const energy = calculateRelationshipEnergy(member);
+
+    if (energy === "Supportive" || energy === "Very Supportive") {
+      supportive++;
+    } else if (energy === "Draining" || energy === "Very Draining") {
+      draining++;
+    } else {
+      neutral++;
+    }
+
+    totalScore += getSupportScore(member);
+  });
+
+  const averageScore =
+    categoryMembers.length > 0
+      ? Math.round(totalScore / categoryMembers.length)
+      : 0;
+
+  return `
+    <div style="
+      max-width:500px;
+      margin:0 auto 30px auto;
+      padding:18px;
+      background:#fffaf1;
+      border:1px solid #d8c8af;
+      border-radius:20px;
+      color:#6f6255;
+      line-height:1.8;
+      font-size:18px;
+    ">
+      🟢 Supportive: ${supportive}<br>
+      ⚪ Neutral: ${neutral}<br>
+      🔴 Draining: ${draining}<br>
+      ⭐ Average Score: ${averageScore}%
+    </div>
+  `;
+}
     
 function showAddMember(categoryName) {
   document.body.innerHTML = `
