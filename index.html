@@ -1032,6 +1032,12 @@ if (categoryName === "Family") {
     <option value="Supervisor">Supervisor</option>
 
     <option value="Work Connection">Work Connection</option>
+    
+    <option value="Contractor">Contractor</option>
+    
+   <option value="Investor">Investor</option>
+
+   <option value="Supplier">Supplier</option>
   `;
 }
 
@@ -1041,11 +1047,40 @@ if (categoryName === "Family") {
       <option value="Cat">Cat</option>
       <option value="Rabbit">Rabbit</option>
       <option value="Bird">Bird</option>
+      <option value="Fish">Fish</option>
+      <option value="Horse">Horse</option>
+     <option value="Reptile">Reptile</option>
+     <option value="Other Pet">Other Pet</option>
     `;
   }
-
+if (categoryName === "Studies") {
   return `
-    <option value="Neighbor">Neighbor</option>
+    <option value="Teacher">Teacher</option>
+    <option value="Professor">Professor</option>
+    <option value="Tutor">Tutor</option>
+    <option value="Classmate">Classmate</option>
+    <option value="Study Partner">Study Partner</option>
+    <option value="Student">Student</option>
+    <option value="Research Supervisor">Research Supervisor</option>
+    <option value="Other">Other</option>
+  `;
+}
+
+if (categoryName === "Projects") {
+  return `
+    <option value="Project Partner">Project Partner</option>
+    <option value="Collaborator">Collaborator</option>
+    <option value="Co-Founder">Co-Founder</option>
+    <option value="Creative Partner">Creative Partner</option>
+    <option value="Advisor">Advisor</option>
+    <option value="Volunteer">Volunteer</option>
+    <option value="Contributor">Contributor</option>
+    <option value="Other">Other</option>
+  `;
+}
+   if (categoryName === "Community") {
+  return `
+<option value="Neighbor">Neighbor</option>
 <option value="Church Member">Church Member</option>
 <option value="Spiritual Group Member">Spiritual Group Member</option>
 <option value="Volunteer">Volunteer</option>
@@ -1053,6 +1088,10 @@ if (categoryName === "Family") {
 <option value="Tenant">Tenant</option>
 <option value="Landlord">Landlord</option>
 <option value="Community Leader">Community Leader</option>
+<option value="Yoga Group Member">Yoga Group Member</option>
+<option value="Meditation Group Member">Meditation Group Member</option>
+<option value="Local Business Owner">Local Business Owner</option>
+<option value="Community Organizer">Community Organizer</option>
 <option value="Other">Other</option>
   `;
 }
