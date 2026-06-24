@@ -309,20 +309,82 @@ function renderVisibleVillageMembers() {
 
   const visibleMembers = getVisibleVillageMembers();
 
-  const positions = [
-    { left: "48%", top: "30%" },
-    { left: "60%", top: "38%" },
-    { left: "63%", top: "58%" },
-    { left: "50%", top: "70%" },
-    { left: "37%", top: "58%" },
-    { left: "36%", top: "38%" },
-    { left: "50%", top: "22%" }
-  ];
-
   return visibleMembers.map((member, index) => {
 
-    const position = positions[index];
+let position;
 
+if (member.category === "Family") {
+
+  const familyPositions = [
+    { left: "50%", top: "32%" },
+    { left: "48%", top: "40%" },
+    { left: "52%", top: "40%" }
+  ];
+
+  position =
+    familyPositions[index % familyPositions.length];
+
+}
+
+else if (member.category === "Friends") {
+
+  const friendPositions = [
+    { left: "72%", top: "42%" },
+    { left: "68%", top: "48%" },
+    { left: "76%", top: "48%" }
+  ];
+
+  position =
+    friendPositions[index % friendPositions.length];
+
+}
+
+else if (member.category === "Community") {
+
+  const communityPositions = [
+    { left: "28%", top: "42%" },
+    { left: "24%", top: "48%" },
+    { left: "32%", top: "48%" }
+  ];
+
+  position =
+    communityPositions[index % communityPositions.length];
+
+}
+
+else if (member.category === "Pets") {
+
+  const petPositions = [
+    { left: "28%", top: "72%" },
+    { left: "24%", top: "78%" }
+  ];
+
+  position =
+    petPositions[index % petPositions.length];
+
+}
+
+else if (member.category === "Studies") {
+
+  const studyPositions = [
+    { left: "50%", top: "82%" },
+    { left: "46%", top: "88%" }
+  ];
+
+  position =
+    studyPositions[index % studyPositions.length];
+
+}
+
+else {
+
+  position = {
+    left: "50%",
+    top: "60%"
+  };
+
+}
+    
     return `
       <div style="
         position:absolute;
