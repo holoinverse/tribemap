@@ -815,13 +815,13 @@ if (categoryMembers.length === 0) {
   font-size:14px;
   margin-top:8px;
 ">
-  ${
-    member.energy === "Very Supportive" ? "🟢 Very Supportive" :
-    member.energy === "Supportive" ? "🟢 Supportive" :
-    member.energy === "Draining" ? "🔴 Draining" :
-    member.energy === "Very Draining" ? "🔴 Very Draining" :
-    "⚪ Neutral"
-  }
+${
+  calculateRelationshipEnergy(member) === "Very Supportive" ? "🟢 Very Supportive" :
+  calculateRelationshipEnergy(member) === "Supportive" ? "🟢 Supportive" :
+  calculateRelationshipEnergy(member) === "Draining" ? "🔴 Draining" :
+  calculateRelationshipEnergy(member) === "Very Draining" ? "🔴 Very Draining" :
+  "⚪ Neutral"
+}
 </div>
 
 <div style="
@@ -1604,6 +1604,27 @@ function saveEditedInteraction(memberName, categoryName, interactionIndex) {
   saveData();
 
   showInteractionHistory(memberName, categoryName);
+}
+
+    function calculateRelationshipEnergy(member) {
+
+  if (!member.interactions || member.interactions.length === 0) {
+    return "Neutral";
+  }
+
+  let score = 0;
+
+  member.interactions.forEach(interaction => {
+    if (interaction.outcome === "better") score += 1;
+    if (interaction.outcome === "worse") score -= 1;
+  });
+
+  if (score >= 4) return "Very Supportive";
+  if (score >= 1) return "Supportive";
+  if (score === 0) return "Neutral";
+  if (score <= -4) return "Very Draining";
+
+  return "Draining";
 }
     
 function saveData() {
