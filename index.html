@@ -375,6 +375,46 @@ src="${member.photo ? member.photo : member.avatar}"
     .join("");
 }
 
+function getVillagePosition(member, index) {
+
+  const anglePositions = [
+    -100,
+    -40,
+    20,
+    80,
+    140,
+    200
+  ];
+
+  let radius = 170;
+
+  if (member.proximity === "Very Close") {
+    radius = 125;
+  }
+
+  if (member.proximity === "Close") {
+    radius = 155;
+  }
+
+  if (member.proximity === "Distant") {
+    radius = 190;
+  }
+
+  const angle =
+    anglePositions[index] * (Math.PI / 180);
+
+  const x =
+    50 + Math.cos(angle) * (radius / 420 * 100);
+
+  const y =
+    50 + Math.sin(angle) * (radius / 420 * 100);
+
+  return {
+    left: `${x}%`,
+    top: `${y}%`
+  };
+}
+    
 function renderVisibleVillageMembers() {
 
   const visibleMembers = getVisibleVillageMembers();
