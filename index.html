@@ -963,10 +963,38 @@ function getVillageScore(member) {
     
 function getVisibleVillageMembers() {
 
-  return [...members]
-    .filter(member => getCurrentMonthInteractions(member).length > 0)
-    .sort((a, b) => getVillageScore(b) - getVillageScore(a))
-    .slice(0, 6);
+  const visibleLimit = 6;
+
+  const rankedMembers = [...members]
+    .map(member => {
+      const monthlyCount =
+        getCurrentMonthInteractions(member).length;
+
+      return {
+        member: member,
+        monthlyCount: monthlyCount,
+        villageScore: getVillageScore(member)
+      };
+    })
+    .filter(item => item.monthlyCount > 0)
+    .sort((a, b) => {
+      if (b.monthlyCount !== a.monthlyCount) {
+        return b.monthlyCount - a.monthlyCount;
+      }
+
+      return b.villageScore - a.villageScore;
+    });
+
+  if (rankedMembers.length <= visibleLimit) {
+    return rankedMembers.map(item => item.member);
+  }
+
+  const cutoffCount =
+    rankedMembers[visibleLimit - 1].monthlyCount;
+
+  return rankedMembers
+    .filter(item => item.monthlyCount >= cutoffCount)
+    .map(item => item.member);
 }
     
 function getCategoryDashboard(categoryName) {
