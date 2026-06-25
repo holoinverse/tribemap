@@ -103,7 +103,17 @@
 
 <body>
   <div class="card">
-    <h1>YOUR TRIBE</h1>
+    <div style="
+  position:absolute;
+  top:20px;
+  right:20px;
+  display:flex;
+  gap:8px;
+">
+  <button onclick="changeLanguage('en')">EN</button>
+  <button onclick="changeLanguage('pt')">PT</button>
+</div>
+   <h1>${t("yourTribe")}</h1>
     <p>The people around you shape your life more than you realize.</p>
     <button onclick="showNameScreen()">   Begin Mapping </button>
   </div>
