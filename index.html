@@ -113,10 +113,10 @@
   <button onclick="changeLanguage('en')">EN</button>
   <button onclick="changeLanguage('pt')">PT</button>
 </div>
-   <h1>${t("yourTribe")}</h1>
-    <p>${t("openingMessage")}</p>
-   <button onclick="showNameScreen()">
-    ${t("beginMapping")}
+   <h1>YOUR TRIBE</h1>
+<p>The people around you shape your life more than you realize.</p>
+<button onclick="showNameScreen()">
+  Begin Mapping
 </button>
   </div>
   <script>
@@ -153,12 +153,16 @@ let selectedPeriod = {
 let currentLanguage = localStorage.getItem("tribemap_language") || "en";
 
 const translations = {
-  en: {
+ en: {
     myProfile: "My Profile",
     interactionPeriod: "Interaction Period",
     basedThisMonth: "Based on this month's interactions",
     chief: "Chief",
     you: "YOU",
+
+    yourTribe: "YOUR TRIBE",
+    openingMessage: "The people around you shape your life more than you realize.",
+    beginMapping: "Begin Mapping",
 
     family: "Family",
     friends: "Friends",
@@ -168,14 +172,18 @@ const translations = {
     studies: "Studies",
     projects: "Projects",
     work: "Work"
-  },
+},
 
-  pt: {
+pt: {
     myProfile: "Meu Perfil",
     interactionPeriod: "Período de Interação",
     basedThisMonth: "Baseado nas interações deste mês",
     chief: "Cacique",
     you: "VOCÊ",
+
+    yourTribe: "SUA TRIBO",
+    openingMessage: "As pessoas ao seu redor moldam sua vida mais do que você imagina.",
+    beginMapping: "Começar o Mapeamento",
 
     family: "Família",
     friends: "Amigos",
@@ -185,7 +193,7 @@ const translations = {
     studies: "Estudos",
     projects: "Projetos",
     work: "Trabalho"
-  }
+}
 };
 
 function t(key) {
