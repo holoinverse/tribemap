@@ -432,7 +432,7 @@ function renderVisibleVillageMembers() {
 
   return visibleMembers.map((member, index) => {
 
-    const position = safePositions[index];
+ const position = getVillagePosition(member, index);
 
     return `
     <div onclick="showVillageMemberPanel('${member.name}', '${member.category}')" style="
