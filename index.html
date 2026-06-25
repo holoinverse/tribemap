@@ -162,6 +162,7 @@ better: "Better",
 same: "Same",
 worse: "Worse",
 notesOptional: "Notes (optional)",
+saveInteraction: "Save Interaction",
 
 backToMap: "← Back to Map",
 addMember: "Add Member",
@@ -223,6 +224,7 @@ better: "Melhor",
 same: "Igual",
 worse: "Pior",
 notesOptional: "Observações (opcional)",
+saveInteraction: "Salvar Interação",
 
 backToMap: "← Voltar ao Mapa",
 addMember: "Adicionar Membro",
@@ -265,7 +267,7 @@ function t(key) {
   return translations[currentLanguage][key] || key;
 }
 
-function translateCategoryLabel(label) {
+function CategoryLabel(label) {
   const categoryMap = {
     "Family": "family",
     "Friends": "friends",
@@ -545,7 +547,7 @@ ${t("myProfile")}
   position:absolute;
   left:50%;
   top:50%;
-  transform:translate(-50%,-50%);
+  transform:(-50%,-50%);
   width:420px;
 height:420px;
   border-radius:50%;
