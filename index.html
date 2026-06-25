@@ -340,103 +340,18 @@ function renderVisibleVillageMembers() {
 
   const visibleMembers = getVisibleVillageMembers();
 
-  const categoryCount = {};
+  const safePositions = [
+    { left: "42%", top: "34%" },
+    { left: "58%", top: "34%" },
+    { left: "34%", top: "48%" },
+    { left: "66%", top: "48%" },
+    { left: "42%", top: "64%" },
+    { left: "58%", top: "64%" }
+  ];
 
   return visibleMembers.map((member, index) => {
 
-    categoryCount[member.category] =
-      (categoryCount[member.category] || 0) + 1;
-
-    const memberIndex =
-      categoryCount[member.category] - 1;
-
-    let position;
-
-    switch (member.category) {
-
-      case "Family":
-  if (memberIndex === 0) {
-    position = { left: "45%", top: "32%" };
-  } else if (memberIndex === 1) {
-    position = { left: "55%", top: "32%" };
-  } else {
-    position = { left: "50%", top: "38%" };
-  }
-  break;
-
-     case "Friends":
-  if (memberIndex === 0) {
-    position = { left: "66%", top: "43%" };
-  } else if (memberIndex === 1) {
-    position = { left: "76%", top: "43%" };
-  } else {
-    position = { left: "71%", top: "50%" };
-  }
-  break;
-
-      case "Community":
-        if (memberIndex === 0) {
-          position = { left: "27%", top: "34%" };
-        } else if (memberIndex === 1) {
-          position = { left: "33%", top: "34%" };
-        } else {
-          position = { left: "30%", top: "40%" };
-        }
-        break;
-
-     case "Pets":
-  if (memberIndex === 0) {
-    position = { left: "17%", top: "58%" };
-  } else if (memberIndex === 1) {
-    position = { left: "25%", top: "58%" };
-  } else {
-    position = { left: "21%", top: "64%" };
-  }
-  break;
-
-      case "Studies":
-        if (memberIndex === 0) {
-          position = { left: "27%", top: "74%" };
-        } else if (memberIndex === 1) {
-          position = { left: "33%", top: "74%" };
-        } else {
-          position = { left: "30%", top: "80%" };
-        }
-        break;
-
-      case "Projects":
-        if (memberIndex === 0) {
-          position = { left: "47%", top: "82%" };
-        } else if (memberIndex === 1) {
-          position = { left: "53%", top: "82%" };
-        } else {
-          position = { left: "50%", top: "76%" };
-        }
-        break;
-
-      case "Work":
-        if (memberIndex === 0) {
-          position = { left: "69%", top: "74%" };
-        } else if (memberIndex === 1) {
-          position = { left: "75%", top: "74%" };
-        } else {
-          position = { left: "72%", top: "80%" };
-        }
-        break;
-
-      case "Love & Relationships":
-        if (memberIndex === 0) {
-          position = { left: "69%", top: "60%" };
-        } else if (memberIndex === 1) {
-          position = { left: "75%", top: "60%" };
-        } else {
-          position = { left: "72%", top: "66%" };
-        }
-        break;
-
-      default:
-        position = { left: "50%", top: "50%" };
-    }
+    const position = safePositions[index];
 
     return `
       <div style="
@@ -454,8 +369,8 @@ function renderVisibleVillageMembers() {
           src="${member.photo ? member.photo : member.avatar}"
           title="${member.name}"
           style="
-            width:60px;
-            height:60px;
+            width:58px;
+            height:58px;
             object-fit:cover;
             border-radius:50%;
             background:#fffaf1;
