@@ -841,6 +841,36 @@ function getCurrentPeriodLabel() {
 
   return "Custom Period";
 }
+
+function previousPeriod() {
+
+  if (selectedPeriod.type === "month") {
+
+    selectedPeriod.month--;
+
+    if (selectedPeriod.month < 0) {
+      selectedPeriod.month = 11;
+      selectedPeriod.year--;
+    }
+
+    showMap();
+  }
+}
+
+function nextPeriod() {
+
+  if (selectedPeriod.type === "month") {
+
+    selectedPeriod.month++;
+
+    if (selectedPeriod.month > 11) {
+      selectedPeriod.month = 0;
+      selectedPeriod.year++;
+    }
+
+    showMap();
+  }
+}
     
 function formatInteractionDate(dateString) {
   if (!dateString) return "No date";
