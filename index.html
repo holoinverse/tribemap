@@ -1393,14 +1393,14 @@ function showAddMember(categoryName) {
   margin-bottom:20px;
   line-height:1;
 ">
-  Add Member
+${editingMember ? t("editMember") : t("addMember")}
 </h1>
 
       <p>${categoryName}</p>
 
       <input
         id="memberName"
-        placeholder="Name"
+        placeholder="${t("memberName")}"
         style="
           width:100%;
           max-width:400px;
