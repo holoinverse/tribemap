@@ -249,12 +249,12 @@ height:420px;
 ">
 </div>
 
-        <div style="
+       <div style="
   position:absolute;
   left:50%;
   top:50%;
   transform:translate(-50%,-50%);
-  z-index:2;
+  z-index:5;
   width:220px;
   height:240px;
   border-radius:0;
@@ -271,7 +271,7 @@ height:420px;
 <img
   src="assets/tribe-fire.png"
   style="
-    width:120px;
+    width:115px;
     height:auto;
     display:block;
     margin-bottom:6px;
@@ -279,9 +279,9 @@ height:420px;
 >
 
 ${tribeOwner.photo ? `
-<img
-  src="${tribeOwner.photo}"
-  style="
+  <img
+    src="${tribeOwner.photo}"
+    style="
       width:76px;
       height:76px;
       object-fit:cover;
@@ -289,17 +289,43 @@ ${tribeOwner.photo ? `
       border:5px solid #c9a96e;
       background:#fffaf1;
       box-shadow:0 8px 22px rgba(46,39,33,.28);
-      margin-bottom:8px;
-"
->
-` : ""}
+      margin-bottom:7px;
+    "
+  >
+` : `
+  <div style="
+    width:76px;
+    height:76px;
+    border-radius:50%;
+    border:5px solid #c9a96e;
+    background:#fffaf1;
+    box-shadow:0 8px 22px rgba(46,39,33,.28);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    margin-bottom:7px;
+  ">
+    👤
+  </div>
+`}
 
 <div style="
-font-size:18px;
-font-weight:bold;
-letter-spacing:1px;
+  font-size:11px;
+  color:#8b7355;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  margin-bottom:2px;
 ">
-${tribeOwner.name || "YOU"}
+  Chief
+</div>
+
+<div style="
+  font-size:18px;
+  font-weight:bold;
+  letter-spacing:1px;
+">
+  ${tribeOwner.name || "YOU"}
 </div>
 
 </div>
