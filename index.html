@@ -226,7 +226,31 @@ function translateCategoryLabel(label) {
 function changeLanguage(language) {
   currentLanguage = language;
   localStorage.setItem("tribemap_language", language);
-  showMap();
+  showHomeScreen();
+}
+
+function showHomeScreen() {
+  document.body.innerHTML = `
+    <div class="card">
+      <div style="
+        position:absolute;
+        top:20px;
+        right:20px;
+        display:flex;
+        gap:8px;
+      ">
+        <button onclick="changeLanguage('en')">EN</button>
+        <button onclick="changeLanguage('pt')">PT</button>
+      </div>
+
+      <h1>${t("yourTribe")}</h1>
+      <p>${t("openingMessage")}</p>
+
+      <button onclick="showNameScreen()">
+        ${t("beginMapping")}
+      </button>
+    </div>
+  `;
 }
     
 function showNameScreen() {
@@ -2556,6 +2580,8 @@ if (savedMembers) {
 if (savedOwner) {
   tribeOwner = JSON.parse(savedOwner);
 }
+
+    showHomeScreen();
     
 </script>
 
