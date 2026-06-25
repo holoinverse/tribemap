@@ -137,6 +137,54 @@ let selectedPeriod = {
     year: new Date().getFullYear(),
     month: new Date().getMonth()
 };
+
+let currentLanguage = localStorage.getItem("tribemap_language") || "en";
+
+const translations = {
+  en: {
+    myProfile: "My Profile",
+    interactionPeriod: "Interaction Period",
+    basedThisMonth: "Based on this month's interactions",
+    chief: "Chief",
+    you: "YOU",
+
+    family: "Family",
+    friends: "Friends",
+    community: "Community",
+    pets: "Pets",
+    love: "Love & Relationships",
+    studies: "Studies",
+    projects: "Projects",
+    work: "Work"
+  },
+
+  pt: {
+    myProfile: "Meu Perfil",
+    interactionPeriod: "Período de Interação",
+    basedThisMonth: "Baseado nas interações deste mês",
+    chief: "Chefe",
+    you: "VOCÊ",
+
+    family: "Família",
+    friends: "Amigos",
+    community: "Comunidade",
+    pets: "Pets",
+    love: "Amor & Relacionamentos",
+    studies: "Estudos",
+    projects: "Projetos",
+    work: "Trabalho"
+  }
+};
+
+function t(key) {
+  return translations[currentLanguage][key] || key;
+}
+
+function changeLanguage(language) {
+  currentLanguage = language;
+  localStorage.setItem("tribemap_language", language);
+  showMap();
+}
     
 function showNameScreen() {
   
@@ -228,7 +276,7 @@ function showMap() {
   line-height:1.5;
 ">
 
-📅 <strong>Interaction Period</strong><br>
+📅 <strong>${t("interactionPeriod")}</strong><br>
 
 <div style="
 display:flex;
@@ -272,7 +320,7 @@ color:#6f6255;
 </div>
 
 <span style="font-size:14px;">
-Based on this month's interactions
+${t("basedThisMonth")}
 </span>
 
 </div>
@@ -293,7 +341,9 @@ z-index:20;
   cursor:pointer;
 ">
 
-My Profile
+
+
+${t("myProfile")}
 </button>
 
       <div style="
@@ -384,7 +434,7 @@ ${tribeOwner.photo ? `
   letter-spacing:1px;
   margin-top:4px;
 ">
-  ${tribeOwner.name || "YOU"}
+ ${tribeOwner.name || t("you")}
 </div>
 
 <div style="
@@ -394,7 +444,7 @@ ${tribeOwner.photo ? `
   letter-spacing:3px;
   margin-top:2px;
 ">
-  Chief
+  ${t("chief")}
 </div>
 
 </div>
