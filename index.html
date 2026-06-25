@@ -158,6 +158,9 @@ addYourPhoto: "Add your photo (optional)",
 save: "Save",
 cancel: "Cancel",
 
+backToMap: "← Back to Map",
+addMember: "Add Member",
+   
     family: "Family",
     friends: "Friends",
     community: "Community",
@@ -187,6 +190,9 @@ yourName: "Seu nome",
 addYourPhoto: "Adicionar sua foto (opcional)",
 save: "Salvar",
 cancel: "Cancelar",
+
+  backToMap: "← Voltar ao Mapa",
+addMember: "Adicionar Membro",
   
     family: "Família",
     friends: "Amigos",
@@ -876,7 +882,7 @@ function openCategory(categoryName) {
         font-family:Georgia, serif;
         cursor:pointer;
       ">
-        ← Back to Map
+    ${t("backToMap")}
       </button>
 
      <h1 style="font-size:54px; margin-bottom:10px;">
@@ -898,7 +904,7 @@ ${renderMembers(categoryName)}
   font-size:17px;
   cursor:pointer;
 ">
-  + Add Member
++ ${t("addMember")}
 </button>
 
     </div>
