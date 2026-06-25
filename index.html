@@ -180,6 +180,21 @@ function t(key) {
   return translations[currentLanguage][key] || key;
 }
 
+function translateCategoryLabel(label) {
+  const categoryMap = {
+    "Family": "family",
+    "Friends": "friends",
+    "Community": "community",
+    "Pets": "pets",
+    "Love & Relationships": "love",
+    "Studies": "studies",
+    "Projects": "projects",
+    "Work": "work"
+  };
+
+  return t(categoryMap[label]) || label;
+}
+    
 function changeLanguage(language) {
   currentLanguage = language;
   localStorage.setItem("tribemap_language", language);
@@ -752,7 +767,7 @@ const avatars =
 >
       
      <div style="font-size:16px;">
-  ${label} (${count})
+ ${translateCategoryLabel(label)} (${count})
 </div>
 
 <div style="
