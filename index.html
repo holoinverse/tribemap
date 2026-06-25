@@ -399,7 +399,10 @@ if (member.proximity === "Close") {
 if (member.proximity === "Distant") {
   distance = 30;
 }
-  const angle = anglePositions[index] * (Math.PI / 180);
+  const totalMembers = getVisibleVillageMembers().length;
+const angleStep = 360 / totalMembers;
+const angleDegrees = -90 + index * angleStep;
+const angle = angleDegrees * (Math.PI / 180);
 
   const x = 50 + Math.cos(angle) * distance;
   const y = 50 + Math.sin(angle) * distance;
