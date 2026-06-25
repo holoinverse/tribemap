@@ -157,6 +157,11 @@ yourName: "Your name",
 addYourPhoto: "Add your photo (optional)",
 save: "Save",
 cancel: "Cancel",
+   
+better: "Better",
+same: "Same",
+worse: "Worse",
+notesOptional: "Notes (optional)",
 
 backToMap: "← Back to Map",
 addMember: "Add Member",
@@ -170,7 +175,7 @@ category: "Category",
 saveMember: "Save Member",
 editMember: "Edit Member",
 
-   relationshipEnergy: "Relationship Energy",
+relationshipEnergy: "Relationship Energy",
 relationshipProximity: "Relationship Proximity",
 
 verySupportive: "Very Supportive",
@@ -213,6 +218,11 @@ yourName: "Seu nome",
 addYourPhoto: "Adicionar sua foto (opcional)",
 save: "Salvar",
 cancel: "Cancelar",
+
+better: "Melhor",
+same: "Igual",
+worse: "Pior",
+notesOptional: "Observações (opcional)",
 
 backToMap: "← Voltar ao Mapa",
 addMember: "Adicionar Membro",
@@ -2348,16 +2358,16 @@ function showAddInteraction(memberName, categoryName) {
           margin-bottom:20px;
         "
       >
-<option value="better">😊 Better</option>
-<option value="same">😐 Same</option>
-<option value="worse">😔 Worse</option>
+<option value="better">😊 ${t("better")}</option>
+<option value="same">😐 ${t("same")}</option>
+<option value="worse">😔 ${t("worse")}</option>
       </select>
 
       <br>
 
       <textarea
         id="interactionNotes"
-        placeholder="Notes (optional)"
+        placeholder="${t("notesOptional")}"
         style="
           width:100%;
           max-width:400px;
