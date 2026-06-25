@@ -898,10 +898,32 @@ function getActivityScore(member) {
   return score;
 }
 
+function getCurrentMonthInteractions(member) {
+
+  if (!member.interactions) {
+    return [];
+  }
+
+  const today = new Date();
+  const currentMonth = today.getMonth();
+  const currentYear = today.getFullYear();
+
+  return member.interactions.filter(interaction => {
+    if (!interaction.date) return false;
+
+    const interactionDate = new Date(interaction.date);
+
+    return (
+      interactionDate.getMonth() === currentMonth &&
+      interactionDate.getFullYear() === currentYear
+    );
+  });
+}
+
 function getVisibleVillageMembers() {
 
   return [...members]
-    .filter(member => member.interactions && member.interactions.length > 0)
+    .filter(member => getCurrentMonthInteractions(member).length > 0)
     .sort((a, b) => getActivityScore(b) - getActivityScore(a))
     .slice(0, 6);
 }
