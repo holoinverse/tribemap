@@ -340,68 +340,115 @@ function renderVisibleVillageMembers() {
 
   const visibleMembers = getVisibleVillageMembers();
 
-const positions = [
-  { left: "50%", top: "31%" },
-  { left: "71%", top: "46%" },
-  { left: "69%", top: "72%" },
-  { left: "50%", top: "82%" },
-  { left: "29%", top: "72%" },
-  { left: "21%", top: "56%" }
-];
+  const categoryCount = {};
 
   return visibleMembers.map((member, index) => {
 
-let position;
+    categoryCount[member.category] =
+      (categoryCount[member.category] || 0) + 1;
 
-switch (member.category) {
+    const memberIndex =
+      categoryCount[member.category] - 1;
 
-  case "Family":
-    position = { left: "50%", top: "31%" };
-    break;
+    let position;
 
-  case "Friends":
-    position = { left: "71%", top: "46%" };
-    break;
+    switch (member.category) {
 
-  case "Love & Relationships":
-    position = { left: "69%", top: "72%" };
-    break;
+      case "Family":
+        if (memberIndex === 0) {
+          position = { left: "47%", top: "31%" };
+        } else if (memberIndex === 1) {
+          position = { left: "53%", top: "31%" };
+        } else {
+          position = { left: "50%", top: "36%" };
+        }
+        break;
 
-  case "Work":
-    position = { left: "71%", top: "82%" };
-    break;
+      case "Friends":
+        if (memberIndex === 0) {
+          position = { left: "69%", top: "43%" };
+        } else if (memberIndex === 1) {
+          position = { left: "75%", top: "43%" };
+        } else {
+          position = { left: "72%", top: "49%" };
+        }
+        break;
 
-  case "Projects":
-    position = { left: "50%", top: "82%" };
-    break;
+      case "Community":
+        if (memberIndex === 0) {
+          position = { left: "27%", top: "34%" };
+        } else if (memberIndex === 1) {
+          position = { left: "33%", top: "34%" };
+        } else {
+          position = { left: "30%", top: "40%" };
+        }
+        break;
 
-  case "Studies":
-    position = { left: "29%", top: "72%" };
-    break;
+      case "Pets":
+        if (memberIndex === 0) {
+          position = { left: "18%", top: "56%" };
+        } else if (memberIndex === 1) {
+          position = { left: "24%", top: "56%" };
+        } else {
+          position = { left: "21%", top: "62%" };
+        }
+        break;
 
-  case "Pets":
-    position = { left: "21%", top: "56%" };
-    break;
+      case "Studies":
+        if (memberIndex === 0) {
+          position = { left: "27%", top: "74%" };
+        } else if (memberIndex === 1) {
+          position = { left: "33%", top: "74%" };
+        } else {
+          position = { left: "30%", top: "80%" };
+        }
+        break;
 
-  case "Community":
-    position = { left: "29%", top: "34%" };
-    break;
+      case "Projects":
+        if (memberIndex === 0) {
+          position = { left: "47%", top: "82%" };
+        } else if (memberIndex === 1) {
+          position = { left: "53%", top: "82%" };
+        } else {
+          position = { left: "50%", top: "76%" };
+        }
+        break;
 
-  default:
-    position = { left: "50%", top: "50%" };
-}
-    
+      case "Work":
+        if (memberIndex === 0) {
+          position = { left: "69%", top: "74%" };
+        } else if (memberIndex === 1) {
+          position = { left: "75%", top: "74%" };
+        } else {
+          position = { left: "72%", top: "80%" };
+        }
+        break;
+
+      case "Love & Relationships":
+        if (memberIndex === 0) {
+          position = { left: "69%", top: "60%" };
+        } else if (memberIndex === 1) {
+          position = { left: "75%", top: "60%" };
+        } else {
+          position = { left: "72%", top: "66%" };
+        }
+        break;
+
+      default:
+        position = { left: "50%", top: "50%" };
+    }
+
     return `
       <div style="
-  position:absolute;
-  left:${position.left};
-  top:${position.top};
-  transform:translate(-50%,-50%);
-  z-index:4;
-  text-align:center;
-  animation:villageWalk 3s ease-in-out infinite;
-  animation-delay:${index * 0.35}s;
-">
+        position:absolute;
+        left:${position.left};
+        top:${position.top};
+        transform:translate(-50%,-50%);
+        z-index:4;
+        text-align:center;
+        animation:villageWalk 3s ease-in-out infinite;
+        animation-delay:${index * 0.35}s;
+      ">
 
         <img
           src="${member.photo ? member.photo : member.avatar}"
@@ -434,6 +481,7 @@ switch (member.category) {
 
   }).join("");
 }
+    
 function categoryNode(icon, label, left, top) {
 const count =
   members.filter(member => member.category === label).length;
