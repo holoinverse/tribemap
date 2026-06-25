@@ -386,18 +386,18 @@ function getVillagePosition(member, index) {
     180
   ];
 
- let distance = 22;
+let distance = 24;
 
 if (member.proximity === "Very Close") {
-  distance = 13;
+  distance = 16;
 }
 
 if (member.proximity === "Close") {
-  distance = 20;
+  distance = 23;
 }
 
 if (member.proximity === "Distant") {
-  distance = 27;
+  distance = 30;
 }
   const angle = anglePositions[index] * (Math.PI / 180);
 
