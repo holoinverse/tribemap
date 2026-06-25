@@ -920,11 +920,50 @@ function getCurrentMonthInteractions(member) {
   });
 }
 
+function getVillageScore(member) {
+
+  const monthlyInteractions =
+    getCurrentMonthInteractions(member).length;
+
+  let proximityScore = 0;
+
+  switch (member.proximity) {
+
+    case "Very Close":
+      proximityScore = 30;
+      break;
+
+    case "Close":
+      proximityScore = 20;
+      break;
+
+    case "Distant":
+      proximityScore = 10;
+      break;
+
+    default:
+      proximityScore = 15;
+
+  }
+
+  const trendScore =
+    getRelationshipTrend(member) === "Improving"
+      ? 10
+      : 0;
+
+  return (
+    monthlyInteractions * 10 +
+    proximityScore +
+    trendScore
+  );
+
+}
+    
 function getVisibleVillageMembers() {
 
   return [...members]
     .filter(member => getCurrentMonthInteractions(member).length > 0)
-    .sort((a, b) => getActivityScore(b) - getActivityScore(a))
+    .sort((a, b) => getVillageScore(b) - getVillageScore(a))
     .slice(0, 6);
 }
     
