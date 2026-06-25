@@ -163,10 +163,25 @@ addMember: "Add Member",
 
 memberName: "Member name",
 memberPhoto: "Member photo",
+chooseAvatar: "Choose an avatar",
 relationship: "Relationship",
 category: "Category",
 saveMember: "Save Member",
 editMember: "Edit Member",
+
+   relationshipEnergy: "Relationship Energy",
+relationshipProximity: "Relationship Proximity",
+
+verySupportive: "Very Supportive",
+supportive: "Supportive",
+neutral: "Neutral",
+draining: "Draining",
+veryDraining: "Very Draining",
+
+veryClose: "Very Close",
+close: "Close",
+distant: "Distant",
+veryDistant: "Very Distant",
    
     family: "Family",
     friends: "Friends",
@@ -203,10 +218,25 @@ addMember: "Adicionar Membro",
 
 memberName: "Nome do membro",
 memberPhoto: "Foto do membro",
+chooseAvatar: "Escolha um avatar",
 relationship: "Relacionamento",
 category: "Categoria",
 saveMember: "Salvar Membro",
 editMember: "Editar Membro",
+
+  relationshipEnergy: "Energia do Relacionamento",
+relationshipProximity: "Proximidade do Relacionamento",
+
+verySupportive: "Muito Positiva",
+supportive: "Positiva",
+neutral: "Neutra",
+draining: "Desgastante",
+veryDraining: "Muito Desgastante",
+
+veryClose: "Muito Próximo",
+close: "Próximo",
+distant: "Distante",
+veryDistant: "Muito Distante",
   
     family: "Família",
     friends: "Amigos",
@@ -1431,7 +1461,7 @@ ${editingMember ? t("editMember") : t("addMember")}
   <br><br>
 
 <p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
-  Relationship Energy
+  ${t("relationshipEnergy")}
 </p>
 
 <select
@@ -1455,7 +1485,7 @@ ${editingMember ? t("editMember") : t("addMember")}
 <br><br>
 
 <p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
-  Relationship Proximity
+  ${t("relationshipProximity")}
 </p>
 
 <select
@@ -1477,7 +1507,7 @@ ${editingMember ? t("editMember") : t("addMember")}
 <br><br>
 
 <p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
-  Choose an avatar
+    ${t("chooseAvatar")}
 </p>
 
 <input id="memberAvatar" type="hidden" value="avatar-woman-short.png">
