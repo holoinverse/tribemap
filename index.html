@@ -351,9 +351,46 @@ const positions = [
 
   return visibleMembers.map((member, index) => {
 
-    const position =
-      positions[index % positions.length];
+let position;
 
+switch (member.category) {
+
+  case "Family":
+    position = { left: "50%", top: "31%" };
+    break;
+
+  case "Friends":
+    position = { left: "71%", top: "46%" };
+    break;
+
+  case "Love & Relationships":
+    position = { left: "69%", top: "72%" };
+    break;
+
+  case "Work":
+    position = { left: "71%", top: "82%" };
+    break;
+
+  case "Projects":
+    position = { left: "50%", top: "82%" };
+    break;
+
+  case "Studies":
+    position = { left: "29%", top: "72%" };
+    break;
+
+  case "Pets":
+    position = { left: "21%", top: "56%" };
+    break;
+
+  case "Community":
+    position = { left: "29%", top: "34%" };
+    break;
+
+  default:
+    position = { left: "50%", top: "50%" };
+}
+    
     return `
       <div style="
   position:absolute;
