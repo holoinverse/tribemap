@@ -153,7 +153,8 @@ let selectedPeriod = {
 };
 
 let currentLanguage = localStorage.getItem("tribemap_language") || "en";
-
+let currentScreen = "home";
+    
 const translations = {
  en: {
     myProfile: "My Profile",
@@ -228,10 +229,32 @@ function translateCategoryLabel(label) {
 function changeLanguage(language) {
   currentLanguage = language;
   localStorage.setItem("tribemap_language", language);
+
+  if (currentScreen === "home") {
+    showHomeScreen();
+    return;
+  }
+
+  if (currentScreen === "name") {
+    showNameScreen();
+    return;
+  }
+
+  if (currentScreen === "map") {
+    showMap();
+    return;
+  }
+
+  if (currentScreen === "owner") {
+    showOwnerProfile();
+    return;
+  }
+
   showHomeScreen();
 }
 
 function showHomeScreen() {
+  currentScreen = "home";
   document.body.innerHTML = `
     <div class="card">
       <div style="
@@ -256,6 +279,7 @@ function showHomeScreen() {
 }
     
 function showNameScreen() {
+  currentScreen = "name";
   
   document.body.innerHTML = `
   
@@ -316,6 +340,8 @@ showMap();
 }
 
 function showMap() {
+  currentScreen = "map";
+  
   const tribeName = currentTribeName || "My Tribe";
 
   document.body.innerHTML = `
@@ -887,7 +913,9 @@ ${renderMembers(categoryName)}
   `;
 }
 
-    function showOwnerProfile() {
+   function showOwnerProfile() {
+  currentScreen = "owner";
+     
   document.body.innerHTML = `
     <div style="
       min-height:100vh;
