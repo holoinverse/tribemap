@@ -378,36 +378,32 @@ src="${member.photo ? member.photo : member.avatar}"
 function getVillagePosition(member, index) {
 
   const anglePositions = [
-    -100,
-    -40,
-    20,
-    80,
-    140,
-    200
+    -110,
+    -55,
+    0,
+    55,
+    110,
+    180
   ];
 
-  let radius = 170;
+  let distance = 31;
 
   if (member.proximity === "Very Close") {
-    radius = 125;
+    distance = 21;
   }
 
   if (member.proximity === "Close") {
-    radius = 155;
+    distance = 30;
   }
 
   if (member.proximity === "Distant") {
-    radius = 190;
+    distance = 39;
   }
 
-  const angle =
-    anglePositions[index] * (Math.PI / 180);
+  const angle = anglePositions[index] * (Math.PI / 180);
 
-  const x =
-    50 + Math.cos(angle) * (radius / 420 * 100);
-
-  const y =
-    50 + Math.sin(angle) * (radius / 420 * 100);
+  const x = 50 + Math.cos(angle) * distance;
+  const y = 50 + Math.sin(angle) * distance;
 
   return {
     left: `${x}%`,
