@@ -131,6 +131,12 @@ preloadImages.forEach(src => {
   avatar: null,
   photo: null
 };
+
+let selectedPeriod = {
+    type: "month",
+    year: new Date().getFullYear(),
+    month: new Date().getMonth()
+};
     
 function showNameScreen() {
   
@@ -787,7 +793,7 @@ function getCurrentPeriodLabel() {
 
   const today = new Date();
 
-  return today.toLocaleDateString("en-AU", {
+  return today.toLocaleDateString("en-US", {
     month: "long",
     year: "numeric"
   });
