@@ -177,6 +177,11 @@ pt: {
 tribeNameQuestion: "Qual é o nome da sua tribo?",
 myTribe: "Minha Tribo",
 continue: "Continuar",
+
+yourName: "Your name",
+addYourPhoto: "Add your photo (optional)",
+save: "Save",
+cancel: "Cancel",
   
     family: "Família",
     friends: "Amigos",
@@ -910,13 +915,13 @@ ${renderMembers(categoryName)}
     ">
 
      <h1 style="font-size:38px; margin-bottom:20px;">
-      My Profile
+     ${t("myProfile")}
       </h1>
 
       <input
         id="ownerName"
        value="${tribeOwner.name || ""}"
-       placeholder="Your name"
+     placeholder="${t("yourName")}"
         style="
           width:100%;
           max-width:400px;
@@ -931,7 +936,7 @@ ${renderMembers(categoryName)}
       <br>
 
       <p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
-        Add your photo (optional)
+      ${t("addYourPhoto")}
       </p>
 
       <input
@@ -944,7 +949,7 @@ ${renderMembers(categoryName)}
       <br>
 
       <button onclick="saveOwnerProfile()">
-        Save
+        ${t("save")}
       </button>
 
       <br><br>
@@ -953,7 +958,7 @@ ${renderMembers(categoryName)}
         background:#d8c8af;
         color:#2e2721;
       ">
-        Cancel
+      ${t("cancel")}
       </button>
 
     </div>
