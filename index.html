@@ -164,6 +164,10 @@ const translations = {
     openingMessage: "The people around you shape your life more than you realize.",
     beginMapping: "Begin Mapping",
 
+   tribeNameQuestion: "What is the name of your tribe?",
+myTribe: "My Tribe",
+continue: "Continue",
+
     family: "Family",
     friends: "Friends",
     community: "Community",
@@ -185,6 +189,10 @@ pt: {
     openingMessage: "As pessoas ao seu redor moldam sua vida mais do que você imagina.",
     beginMapping: "Começar o Mapeamento",
 
+tribeNameQuestion: "Qual é o nome da sua tribo?",
+myTribe: "Minha Tribo",
+continue: "Continuar",
+  
     family: "Família",
     friends: "Amigos",
     community: "Comunidade",
@@ -242,13 +250,13 @@ function showNameScreen() {
           font-size:48px;
           margin-bottom:20px;
         ">
-          What is the name of your tribe?
+         ${t("tribeNameQuestion")}
         </h1>
 
         <input
   id="tribeName"
   type="text"
-  placeholder="My Tribe"
+  placeholder="${t("myTribe")}"
   style="
     width:100%;
     max-width:400px;
@@ -262,7 +270,7 @@ function showNameScreen() {
 <br><br>
 
 <button onclick="saveTribeName()">
-  Continue
+${t("continue")}
 </button>
 
       </div>
