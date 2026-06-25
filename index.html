@@ -395,14 +395,15 @@ function renderVisibleVillageMembers() {
     const position = safePositions[index];
 
     return `
-      <div style="
+    <div onclick="showVillageMemberPanel('${member.name}', '${member.category}')" style="
         position:absolute;
         left:${position.left};
         top:${position.top};
         transform:translate(-50%,-50%);
         z-index:4;
-        text-align:center;
-        animation:villageWalk 3s ease-in-out infinite;
+       text-align:center;
+cursor:pointer;
+animation:villageWalk 3s ease-in-out infinite;
         animation-delay:${index * 0.35}s;
       ">
 
@@ -436,6 +437,91 @@ function renderVisibleVillageMembers() {
     `;
 
   }).join("");
+}
+
+function showVillageMemberPanel(memberName, categoryName) {
+
+  const member = members.find(m =>
+    m.name === memberName &&
+    m.category === categoryName
+  );
+
+  if (!member) {
+    return;
+  }
+
+  document.body.innerHTML += `
+    <div style="
+      position:fixed;
+      inset:0;
+      background:rgba(46,39,33,0.25);
+      z-index:100;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    ">
+      <div style="
+        width:320px;
+        padding:24px;
+        border-radius:28px;
+        background:#fffaf1;
+        border:1px solid #d8c8af;
+        box-shadow:0 18px 40px rgba(46,39,33,0.25);
+        text-align:center;
+        font-family:Georgia, serif;
+        color:#2e2721;
+      ">
+
+        <img
+          src="${member.photo ? member.photo : member.avatar}"
+          style="
+            width:90px;
+            height:90px;
+            object-fit:cover;
+            border-radius:50%;
+            border:4px solid #c9a96e;
+            margin-bottom:10px;
+          "
+        >
+
+        <h2 style="margin:4px 0 6px 0;">
+          ${member.name}
+        </h2>
+
+        <div style="color:#6f6255; margin-bottom:16px;">
+          ${member.relationship} · ${member.category}
+        </div>
+
+        <div style="line-height:1.8; color:#6f6255; font-size:15px;">
+          Energy: ${calculateRelationshipEnergy(member)}<br>
+          Proximity: ${member.proximity || "Close"}<br>
+          Last: ${getLastInteraction(member)}<br>
+          Trend: ${getRelationshipTrend(member)}<br>
+          Health: ${getRelationshipHealth(member)}
+        </div>
+
+        <br>
+
+        <button onclick="openCategory('${member.category}')" style="
+          background:#2e2721;
+          color:#fffaf1;
+          margin-bottom:10px;
+        ">
+          Open Profile
+        </button>
+
+        <br>
+
+        <button onclick="showMap()" style="
+          background:#d8c8af;
+          color:#2e2721;
+        ">
+          Close
+        </button>
+
+      </div>
+    </div>
+  `;
 }
     
 function categoryNode(icon, label, left, top) {
