@@ -194,9 +194,9 @@ openProfile: "Open Profile",
 closeButton: "Close",
 interactions: "Interactions",
 last: "Last",
-supportScore: "Support Score",
+positiveImpact: "Positive Emotional Impact",
 health: "Health",
-averageScore: "Average Score",
+averageScore: "Average Positive Impact",
 noMembersYet: "No members yet.",
 noInteractionsYet: "No interactions yet.",
 editInteraction: "Edit Interaction",
@@ -391,9 +391,9 @@ openProfile: "Abrir Perfil",
 closeButton: "Fechar",
 interactions: "Interações",
 last: "Última",
-supportScore: "Pontuação de Apoio",
+positiveImpact: "Impacto Emocional Positivo",
 health: "Saúde",
-averageScore: "Pontuação Média",
+averageScore: "Impacto Positivo Médio",
 noMembersYet: "Nenhum membro ainda.",
 noInteractionsYet: "Nenhuma interação ainda.",
 editInteraction: "Editar Interação",
@@ -1435,23 +1435,41 @@ function getRelationshipTrend(member) {
   return "→ Stable";
 }
 
-function getSupportScore(member) {
+function getPositiveImpactScore(member) {
 
   if (!member.interactions || member.interactions.length === 0) {
     return 50;
   }
 
+  const interactions = getCurrentMonthInteractions(member);
+
+if (interactions.length === 0) {
+    return 50;
+}
+  
   let score = 0;
 
-  member.interactions.forEach(interaction => {
+interactions.forEach(interaction => {
 
-    if (interaction.outcome === "better") score += 2;
-    if (interaction.outcome === "same") score += 1;
-    if (interaction.outcome === "worse") score += 0;
+  switch (interaction.outcome) {
 
-  });
+    case "better":
+      score += 2;
+      break;
 
-  const maxPossible = member.interactions.length * 2;
+    case "same":
+      score += 1;
+      break;
+
+    case "worse":
+      score += 0;
+      break;
+
+  }
+
+});
+
+ const maxPossible = interactions.length * 2;
 
   return Math.round((score / maxPossible) * 100);
 }
@@ -2025,7 +2043,7 @@ ${
   margin-top:6px;
   margin-bottom:10px;
 ">
-  ${t("supportScore")}: ${getSupportScore(member)}%
+  ${t("positiveImpact")}: ${getSupportScore(member)}%
 </div>
 
 <div style="
