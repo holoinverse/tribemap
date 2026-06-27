@@ -163,8 +163,9 @@ same: "Same",
 worse: "Worse",
 notesOptional: "Notes (optional)",
 saveInteraction: "Save Interaction",
-
+   
 backToMap: "← Back to Map",
+back: "Back",
 addMember: "Add Member",
 
 memberName: "Member name",
@@ -345,6 +346,7 @@ notesOptional: "Observações (opcional)",
 saveInteraction: "Salvar Interação",
 
 backToMap: "← Voltar ao Mapa",
+back: "Voltar",
 addMember: "Adicionar Membro",
 
 memberName: "Nome do membro",
@@ -2020,7 +2022,7 @@ ${
   display:block;
 margin:0 auto 10px auto;
 ">
-  Edit
+${t("edit")}
 </button>
 
 <button onclick="showAddInteraction('${member.name}', '${member.category}')" style="
@@ -2036,7 +2038,7 @@ margin:0 auto 10px auto;
   margin:10px auto;
   margin-right:6px;
 ">
-  + Interaction
+${t("addInteraction")}
 </button>
 
 <button onclick="showInteractionHistory('${member.name}', '${member.category}')" style="
@@ -2051,7 +2053,7 @@ margin:0 auto 10px auto;
   display:block;
   margin:10px auto;
 ">
-  History
+  ${t("history")}
 </button>
 
         <button onclick="deleteMember('${member.name}', '${member.category}')" style="
@@ -2066,7 +2068,7 @@ margin:0 auto 10px auto;
           display:block;
           margin:0 auto;
         ">
-          Delete
+        ${t("delete")}
         </button>
       </div>
     `).join("")}
@@ -2349,7 +2351,7 @@ if (categoryName === "Projects") {
       <br>
 
       <p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
-  Relationship Energy
+${t("relationshipEnergy")}
 </p>
 
 <select
@@ -2374,7 +2376,7 @@ if (categoryName === "Projects") {
 <br>
 
 <p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
-  Relationship Proximity
+${t("relationshipProximity")}
 </p>
 
 <select
@@ -2410,7 +2412,7 @@ if (categoryName === "Projects") {
       <br>
 
       <button onclick="saveEditedMember('${memberName}', '${categoryName}')">
-        Save Changes
+      ${t("saveChanges")}
       </button>
 
       <br><br>
@@ -2502,15 +2504,15 @@ function showAddInteraction(memberName, categoryName) {
         font-family:Georgia, serif;
         cursor:pointer;
       ">
-        ← Back
+        ← ${t("back")}
       </button>
 
       <h1 style="font-size:42px; margin-bottom:10px;">
-        Add Interaction
+      ${t("addInteraction")}
       </h1>
 
      <p style="font-size:20px; color:#6f6255; margin-bottom:30px;">
-  Interaction with: ${memberName}
+ ${t("interactionWith")} ${memberName}
 </p>
 
       <input
@@ -2635,14 +2637,14 @@ function showInteractionHistory(memberName, categoryName){
     ">
 
       <button onclick="openCategory('${categoryName}')">
-        ← Back
+       ← ${t("back")}
       </button>
 
       <h1 style="
   font-size:72px;
   margin:20px 0;
 ">
-  History
+${t("history")}
 </h1>
 
       <h3>
@@ -2691,7 +2693,7 @@ function showInteractionHistory(memberName, categoryName){
 " style="
   margin-right:10px;
 ">
-  Edit
+${t("edit")}
 </button>
             <button onclick="
               deleteInteraction(
@@ -2738,7 +2740,7 @@ function showEditInteraction(memberName, categoryName, interactionIndex) {
     ">
 
       <button onclick="showInteractionHistory('${memberName}', '${categoryName}')">
-        ← Back
+       ← ${t("back")}
       </button>
 
       <h1 style="font-size:42px; margin-bottom:10px;">
