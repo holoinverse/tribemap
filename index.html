@@ -2811,13 +2811,15 @@ function saveEditedInteraction(memberName, categoryName, interactionIndex) {
 
     function calculateRelationshipEnergy(member) {
 
-  if (!member.interactions || member.interactions.length === 0) {
+  const interactions = getCurrentMonthInteractions(member);
+
+  if (interactions.length === 0) {
     return "Neutral";
   }
 
   let score = 0;
 
-  member.interactions.forEach(interaction => {
+  interactions.forEach(interaction => {
     if (interaction.outcome === "better") score += 1;
     if (interaction.outcome === "worse") score -= 1;
   });
