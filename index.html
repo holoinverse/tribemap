@@ -1683,13 +1683,13 @@ function getCategoryDashboard(categoryName) {
   margin-bottom:12px;
   color:#2e2721;
 ">
-  TRIBE OVERVIEW
+${t("tribeOverview")}
 </div>
 
-      🟢 Supportive: ${supportive}<br>
-      ⚪ Neutral: ${neutral}<br>
-      🔴 Draining: ${draining}<br>
-      ⭐ Average Score: ${averageScore}%
+      🟢 ${t("supportive")}: ${supportive}<br>
+      ⚪ ${t("neutral")}: ${neutral}<br>
+      🔴 ${t("draining")}: ${draining}<br>
+      ⭐ ${t("averageScore")}: ${averageScore}%
     </div>
     
   `;
@@ -1993,7 +1993,7 @@ ${
   color:#6f6255;
   margin-top:10px;
 ">
-  Interactions: ${member.interactions ? member.interactions.length : 0}
+ ${t("interactions")}: ${member.interactions ? member.interactions.length : 0}
 </div>
 
 <div style="
@@ -2001,16 +2001,7 @@ ${
   color:#6f5f50;
   margin-bottom:10px;
 ">
-  Last: ${getLastInteraction(member)}
-</div>
-
-<div style="
-  font-size:13px;
-  color:#6f5f50;
-  margin-top:6px;
-  margin-bottom:10px;
-">
-  Trend: ${getRelationshipTrend(member)}
+ ${t("last")}: ${getLastInteraction(member)}
 </div>
 
 <div style="
@@ -2019,7 +2010,7 @@ ${
   margin-top:6px;
   margin-bottom:10px;
 ">
-  Support Score: ${getSupportScore(member)}%
+ ${t("trend")}: ${getRelationshipTrend(member)}
 </div>
 
 <div style="
@@ -2028,7 +2019,16 @@ ${
   margin-top:6px;
   margin-bottom:10px;
 ">
-  Health: ${getRelationshipHealth(member)}
+  ${t("supportScore")}: ${getSupportScore(member)}%
+</div>
+
+<div style="
+  font-size:13px;
+  color:#6f5f50;
+  margin-top:6px;
+  margin-bottom:10px;
+">
+  ${t("health")}: ${getRelationshipHealth(member)}
 </div>
         <br><br>
 
