@@ -1412,11 +1412,14 @@ function getLastInteraction(member) {
 }
 
 function getRelationshipTrend(member) {
-  if (!member.interactions || member.interactions.length < 2) {
-    return "→ Stable";
+
+  const interactions = getCurrentMonthInteractions(member);
+
+  if (interactions.length < 2) {
+    return "Stable";
   }
 
-  const sorted = [...member.interactions].sort(
+  const sorted = [...interactions].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
@@ -1429,14 +1432,14 @@ function getRelationshipTrend(member) {
     if (interaction.outcome === "worse") score -= 1;
   });
 
-  if (score >= 2) return "↑ Improving";
-  if (score <= -2) return "↓ Drifting";
+  if (score >= 2) return "Improving";
+  if (score <= -2) return "Drifting";
 
-  return "→ Stable";
+  return "Stable";
 }
 
-function getPositiveImpactScore(member) {
-
+function getPositiveEmotionalImpact(member) {
+  
   if (!member.interactions || member.interactions.length === 0) {
     return 50;
   }
@@ -1476,7 +1479,7 @@ interactions.forEach(interaction => {
 
 function getRelationshipHealth(member) {
 
-  const score = getSupportScore(member);
+ const score = getPositiveEmotionalImpact(member);
   const trend = getRelationshipTrend(member);
   const energy = calculateRelationshipEnergy(member);
 
@@ -1673,7 +1676,7 @@ function getCategoryDashboard(categoryName) {
       neutral++;
     }
 
-    totalScore += getSupportScore(member);
+    totalScore += getPositiveEmotionalImpact(member);
 
   });
 
@@ -2034,7 +2037,13 @@ ${
   margin-top:6px;
   margin-bottom:10px;
 ">
- ${t("trend")}: ${getRelationshipTrend(member)}
+${t("trend")}: ${
+  getRelationshipTrend(member) === "Improving"
+    ? "↑ " + t("improving")
+    : getRelationshipTrend(member) === "Drifting"
+    ? "↓ " + t("drifting")
+    : "→ " + t("stable")
+}
 </div>
 
 <div style="
@@ -2043,7 +2052,7 @@ ${
   margin-top:6px;
   margin-bottom:10px;
 ">
-  ${t("positiveImpact")}: ${getSupportScore(member)}%
+  ${t("positiveImpact")}: ${getPositiveEmotionalImpact(member)}%
 </div>
 
 <div style="
