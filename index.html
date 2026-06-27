@@ -2418,7 +2418,7 @@ ${t("relationshipProximity")}
       <br><br>
 
       <button onclick="openCategory('${categoryName}')">
-        Cancel
+    ${t("cancel")}
       </button>
 
     </div>
@@ -2429,12 +2429,6 @@ document.getElementById("editMemberRelationship").value =
 
 document.getElementById("editMemberCategory").value =
   member.category;
-
-document.getElementById("editMemberEnergy").value =
-  member.energy || "Neutral";
-
-document.getElementById("editMemberProximity").value =
-  member.proximity || "Close";
      
 }
 
@@ -2459,11 +2453,6 @@ function saveEditedMember(oldName, categoryName){
 member.category =
   document.getElementById("editMemberCategory").value;
 
-member.energy =
-  document.getElementById("editMemberEnergy").value;
-
-member.proximity =
-  document.getElementById("editMemberProximity").value;
   
   saveData();
 
@@ -2537,7 +2526,7 @@ function showAddInteraction(memberName, categoryName) {
   margin-bottom:12px;
   color:#6f6255;
 ">
-  How did you feel after interacting with this person today?
+${t("howDidYouFeel")}
 </p>
       <select
         id="interactionOutcome"
