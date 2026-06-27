@@ -1400,11 +1400,14 @@ function formatInteractionDate(dateString) {
 }
 
 function getLastInteraction(member) {
-  if (!member.interactions || member.interactions.length === 0) {
-    return "No interactions yet";
+
+  const interactions = getCurrentMonthInteractions(member);
+
+  if (interactions.length === 0) {
+    return t("noInteractionsYet");
   }
 
-  const sorted = [...member.interactions].sort(
+  const sorted = [...interactions].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
