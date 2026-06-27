@@ -141,7 +141,7 @@ const translations = {
  en: {
     myProfile: "My Profile",
     interactionPeriod: "Interaction Period",
-    basedThisMonth: "Based on this month's interactions",
+   basedThisMonth: "Based on the selected month's interactions",
     chief: "Chief",
     you: "YOU",
 
@@ -338,7 +338,7 @@ communityOrganizer: "Community Organizer",
 pt: {
     myProfile: "Meu Perfil",
     interactionPeriod: "Período de Interação",
-    basedThisMonth: "Baseado nas interações deste mês",
+  basedThisMonth: "Baseado nas interações do mês selecionado",
     chief: "Cacique",
     you: "VOCÊ",
 
@@ -1534,9 +1534,8 @@ function getCurrentMonthInteractions(member) {
     return [];
   }
 
-  const today = new Date();
-  const currentMonth = today.getMonth();
-  const currentYear = today.getFullYear();
+  const currentMonth = selectedPeriod.month;
+  const currentYear = selectedPeriod.year;
 
   return member.interactions.filter(interaction => {
     if (!interaction.date) return false;
