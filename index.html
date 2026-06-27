@@ -1847,184 +1847,182 @@ function getRelationshipOptions(categoryName) {
 
 if (categoryName === "Family") {
   return `
-    <option value="Grandmother">Grandmother</option>
-    <option value="Grandfather">Grandfather</option>
+    <option value="Grandmother">${t("grandmother")}</option>
+    <option value="Grandfather">${t("grandfather")}</option>
+<option value="Mother">${t("mother")}</option>
+<option value="Father">${t("father")}</option>
 
-    <option value="Mother">Mother</option>
-    <option value="Father">Father</option>
+<option value="Daughter">${t("daughter")}</option>
+<option value="Son">${t("son")}</option>
 
-    <option value="Daughter">Daughter</option>
-    <option value="Son">Son</option>
+<option value="Sister">${t("sister")}</option>
+<option value="Brother">${t("brother")}</option>
 
-    <option value="Sister">Sister</option>
-    <option value="Brother">Brother</option>
+<option value="Half Sister">${t("halfSister")}</option>
+<option value="Half Brother">${t("halfBrother")}</option>
 
-    <option value="Half Sister">Half Sister</option>
-    <option value="Half Brother">Half Brother</option>
+<option value="Stepmother">${t("stepmother")}</option>
+<option value="Stepfather">${t("stepfather")}</option>
 
-    <option value="Stepmother">Stepmother</option>
-    <option value="Stepfather">Stepfather</option>
+    <option value="Stepsister">${t("stepsister")}</option>
+   <option value="Stepbrother">${t("stepbrother")}</option>
 
-    <option value="Stepsister">Stepsister</option>
-    <option value="Stepbrother">Stepbrother</option>
+<option value="Stepdaughter">${t("stepdaughter")}</option>
+<option value="Stepson">${t("stepson")}</option>
 
-    <option value="Stepdaughter">Stepdaughter</option>
-    <option value="Stepson">Stepson</option>
+<option value="Aunt">${t("aunt")}</option>
+<option value="Uncle">${t("uncle")}</option>
 
-    <option value="Aunt">Aunt</option>
-    <option value="Uncle">Uncle</option>
+<option value="Cousin">${t("cousin")}</option>
 
-    <option value="Cousin">Cousin</option>
+<option value="Niece">${t("niece")}</option>
+<option value="Nephew">${t("nephew")}</option>
 
-    <option value="Niece">Niece</option>
-    <option value="Nephew">Nephew</option>
+<option value="Granddaughter">${t("granddaughter")}</option>
+<option value="Grandson">${t("grandson")}</option>
 
-    <option value="Granddaughter">Granddaughter</option>
-    <option value="Grandson">Grandson</option>
+<option value="Mother-in-law">${t("motherInLaw")}</option>
+<option value="Father-in-law">${t("fatherInLaw")}</option>
 
-    <option value="Mother-in-law">Mother-in-law</option>
-    <option value="Father-in-law">Father-in-law</option>
-
-    <option value="Sister-in-law">Sister-in-law</option>
-    <option value="Brother-in-law">Brother-in-law</option>
-
-    <option value="Family Member">Family Member</option>
+<option value="Sister-in-law">${t("sisterInLaw")}</option>
+<option value="Brother-in-law">${t("brotherInLaw")}</option>
+   
+  <option value="Family Member">${t("familyMember")}</option>
   `;
 }
     
   if (categoryName === "Friends") {
   return `
-    <option value="Best Friend">Best Friend</option>
-    <option value="Close Friend">Close Friend</option>
-    <option value="Friend">Friend</option>
-    <option value="Childhood Friend">Childhood Friend</option>
+<option value="Best Friend">${t("bestFriend")}</option>
+<option value="Best Friend">${t("bestFriend")}</option>
+<option value="Close Friend">${t("closeFriend")}</option>
+<option value="Friend">${t("friend")}</option>
+<option value="Childhood Friend">${t("childhoodFriend")}</option>
 
-    <option value="School Friend">School Friend</option>
-    <option value="College Friend">College Friend</option>
+<option value="School Friend">${t("schoolFriend")}</option>
+<option value="College Friend">${t("collegeFriend")}</option>
 
-    <option value="Online Friend">Online Friend</option>
+<option value="Online Friend">${t("onlineFriend")}</option>
 
-    <option value="Travel Friend">Travel Friend</option>
+<option value="Travel Friend">${t("travelFriend")}</option>
 
-    <option value="Neighbor">Neighbor</option>
+<option value="Neighbor">${t("neighbor")}</option>
 
-    <option value="Acquaintance">Acquaintance</option>
+<option value="Acquaintance">${t("acquaintance")}</option>
   `;
 }
 
   if (categoryName === "Love & Relationships") {
   return `
-    <option value="Wife">Wife</option>
-    <option value="Husband">Husband</option>
+    <option value="Wife">${t("wife")}</option>
+<option value="Husband">${t("husband")}</option>
 
-    <option value="Girlfriend">Girlfriend</option>
-    <option value="Boyfriend">Boyfriend</option>
+<option value="Girlfriend">${t("girlfriend")}</option>
+<option value="Boyfriend">${t("boyfriend")}</option>
 
-    <option value="Fiancée">Fiancée</option>
-    <option value="Fiancé">Fiancé</option>
+<option value="Fiancée">${t("fianceeFemale")}</option>
+<option value="Fiancé">${t("fianceMale")}</option>
 
-    <option value="Partner">Partner</option>
+<option value="Partner">${t("partner")}</option>
 
-    <option value="Ex Wife">Ex Wife</option>
-    <option value="Ex Husband">Ex Husband</option>
+<option value="Ex Wife">${t("exWife")}</option>
+<option value="Ex Husband">${t("exHusband")}</option>
 
-    <option value="Ex Girlfriend">Ex Girlfriend</option>
-    <option value="Ex Boyfriend">Ex Boyfriend</option>
+<option value="Ex Girlfriend">${t("exGirlfriend")}</option>
+<option value="Ex Boyfriend">${t("exBoyfriend")}</option>
 
-    <option value="Ex Partner">Ex Partner</option>
+<option value="Ex Partner">${t("exPartner")}</option>
 
-    <option value="Crush">Crush</option>
+<option value="Crush">${t("crush")}</option>
+<option value="Relationship Interest">${t("relationshipInterest")}</option>
 
-    <option value="Relationship Interest">
-      Relationship Interest
-    </option>
   `;
 }
 
  if (categoryName === "Work") {
   return `
-    <option value="Boss">Boss</option>
-    <option value="Manager">Manager</option>
+<option value="Boss">${t("boss")}</option>
+<option value="Manager">${t("manager")}</option>
 
-    <option value="Colleague">Colleague</option>
-    <option value="Coworker">Coworker</option>
+<option value="Colleague">${t("colleague")}</option>
+<option value="Coworker">${t("coworker")}</option>
 
-    <option value="Employee">Employee</option>
+<option value="Employee">${t("employee")}</option>
 
-    <option value="Client">Client</option>
+<option value="Client">${t("client")}</option>
 
-    <option value="Business Partner">Business Partner</option>
+<option value="Business Partner">${t("businessPartner")}</option>
 
-    <option value="Mentor">Mentor</option>
+   <option value="Mentor">${t("mentor")}</option>
 
-    <option value="Consultant">Consultant</option>
+<option value="Consultant">${t("consultant")}</option>
 
-    <option value="Team Member">Team Member</option>
+<option value="Team Member">${t("teamMember")}</option>
 
-    <option value="Supervisor">Supervisor</option>
+<option value="Supervisor">${t("supervisor")}</option>
 
-    <option value="Work Connection">Work Connection</option>
-    
-    <option value="Contractor">Contractor</option>
-    
-   <option value="Investor">Investor</option>
+<option value="Work Connection">${t("workConnection")}</option>
 
-   <option value="Supplier">Supplier</option>
+<option value="Contractor">${t("contractor")}</option>
+
+<option value="Investor">${t("investor")}</option>
+
+<option value="Supplier">${t("supplier")}</option>
   `;
 }
 
   if (categoryName === "Pets") {
     return `
-      <option value="Dog">Dog</option>
-      <option value="Cat">Cat</option>
-      <option value="Rabbit">Rabbit</option>
-      <option value="Bird">Bird</option>
-      <option value="Fish">Fish</option>
-      <option value="Horse">Horse</option>
-     <option value="Reptile">Reptile</option>
-     <option value="Other Pet">Other Pet</option>
+      <option value="Dog">${t("dog")}</option>
+<option value="Cat">${t("cat")}</option>
+<option value="Rabbit">${t("rabbit")}</option>
+<option value="Bird">${t("bird")}</option>
+<option value="Fish">${t("fish")}</option>
+<option value="Horse">${t("horse")}</option>
+<option value="Reptile">${t("reptile")}</option>
+<option value="Other Pet">${t("otherPet")}</option>
     `;
   }
 if (categoryName === "Studies") {
   return `
-    <option value="Teacher">Teacher</option>
-    <option value="Professor">Professor</option>
-    <option value="Tutor">Tutor</option>
-    <option value="Classmate">Classmate</option>
-    <option value="Study Partner">Study Partner</option>
-    <option value="Student">Student</option>
-    <option value="Research Supervisor">Research Supervisor</option>
-    <option value="Other">Other</option>
+    <option value="Teacher">${t("teacher")}</option>
+<option value="Professor">${t("professor")}</option>
+<option value="Tutor">${t("tutor")}</option>
+<option value="Classmate">${t("classmate")}</option>
+<option value="Study Partner">${t("studyPartner")}</option>
+<option value="Student">${t("student")}</option>
+<option value="Research Supervisor">${t("researchSupervisor")}</option>
+<option value="Other">${t("other")}</option>
   `;
 }
 
 if (categoryName === "Projects") {
   return `
-    <option value="Project Partner">Project Partner</option>
-    <option value="Collaborator">Collaborator</option>
-    <option value="Co-Founder">Co-Founder</option>
-    <option value="Creative Partner">Creative Partner</option>
-    <option value="Advisor">Advisor</option>
-    <option value="Volunteer">Volunteer</option>
-    <option value="Contributor">Contributor</option>
-    <option value="Other">Other</option>
+   <option value="Project Partner">${t("projectPartner")}</option>
+<option value="Collaborator">${t("collaborator")}</option>
+<option value="Co-Founder">${t("coFounder")}</option>
+<option value="Creative Partner">${t("creativePartner")}</option>
+<option value="Advisor">${t("advisor")}</option>
+<option value="Volunteer">${t("volunteer")}</option>
+<option value="Contributor">${t("contributor")}</option>
+<option value="Other">${t("other")}</option>
   `;
 }
    if (categoryName === "Community") {
   return `
-<option value="Neighbor">Neighbor</option>
-<option value="Church Member">Church Member</option>
-<option value="Spiritual Group Member">Spiritual Group Member</option>
-<option value="Volunteer">Volunteer</option>
-<option value="Club Member">Club Member</option>
-<option value="Tenant">Tenant</option>
-<option value="Landlord">Landlord</option>
-<option value="Community Leader">Community Leader</option>
-<option value="Yoga Group Member">Yoga Group Member</option>
-<option value="Meditation Group Member">Meditation Group Member</option>
-<option value="Local Business Owner">Local Business Owner</option>
-<option value="Community Organizer">Community Organizer</option>
-<option value="Other">Other</option>
+<option value="Neighbor">${t("neighbor")}</option>
+<option value="Church Member">${t("churchMember")}</option>
+<option value="Spiritual Group Member">${t("spiritualGroupMember")}</option>
+<option value="Volunteer">${t("volunteer")}</option>
+<option value="Club Member">${t("clubMember")}</option>
+<option value="Tenant">${t("tenant")}</option>
+<option value="Landlord">${t("landlord")}</option>
+<option value="Community Leader">${t("communityLeader")}</option>
+<option value="Yoga Group Member">${t("yogaGroupMember")}</option>
+<option value="Meditation Group Member">${t("meditationGroupMember")}</option>
+<option value="Local Business Owner">${t("localBusinessOwner")}</option>
+<option value="Community Organizer">${t("communityOrganizer")}</option>
+<option value="Other">${t("other")}</option>
   `;
 }
   
@@ -2057,7 +2055,7 @@ if (categoryName === "Projects") {
         margin-bottom:20px;
         line-height:1;
       ">
-        Edit Member
+      ${t("editMember")}
       </h1>
 
       <p>${categoryName}</p>
