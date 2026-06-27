@@ -1914,18 +1914,21 @@ interactions: []
 
   }
 }
-    
+  
+
 function renderMembers(categoryName) {
+
   const categoryMembers =
     members.filter(member => member.category === categoryName);
 
-if (categoryMembers.length === 0) {
-  return `
-    <p style="font-size:20px; color:#6f6255;">
-      No members yet.
-    </p>
-  `;
-}
+  if (categoryMembers.length === 0) {
+    return `
+      <p style="font-size:20px; color:#6f6255;">
+        ${t("noMembersYet")}
+      </p>
+    `;
+  }
+
 
   return `
   <div style="
@@ -1979,11 +1982,15 @@ if (categoryMembers.length === 0) {
   margin-top:8px;
 ">
 ${
-  calculateRelationshipEnergy(member) === "Very Supportive" ? "🟢 Very Supportive" :
-  calculateRelationshipEnergy(member) === "Supportive" ? "🟢 Supportive" :
-  calculateRelationshipEnergy(member) === "Draining" ? "🔴 Draining" :
-  calculateRelationshipEnergy(member) === "Very Draining" ? "🔴 Very Draining" :
-  "⚪ Neutral"
+  calculateRelationshipEnergy(member) === "Very Supportive"
+    ? "🟢 " + t("verySupportive")
+    : calculateRelationshipEnergy(member) === "Supportive"
+    ? "🟢 " + t("supportive")
+    : calculateRelationshipEnergy(member) === "Draining"
+    ? "🔴 " + t("draining")
+    : calculateRelationshipEnergy(member) === "Very Draining"
+    ? "🔴 " + t("veryDraining")
+    : "⚪ " + t("neutral")
 }
 </div>
 
