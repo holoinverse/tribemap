@@ -2642,10 +2642,10 @@ ${t("history")}
 
             ${
               interaction.outcome === "better"
-                ? "😊 Better"
+                ? "😊 " + t("better")
                 : interaction.outcome === "same"
-                ? "😐 Same"
-                : "😔 Worse"
+                ? "😐 " + t("same")
+                : "😔 " + t("worse")
             }
 
             <br><br>
@@ -2672,14 +2672,14 @@ ${t("edit")}
                 ${index}
               )
             ">
-              Delete
+             ${t("delete")}
             </button>
 
           </div>
 
         `).join("")
         :
-        "<p>No interactions yet.</p>"
+        `<p>${t("noInteractionsYet")}</p>`
       }
 
     </div>
@@ -2714,7 +2714,7 @@ function showEditInteraction(memberName, categoryName, interactionIndex) {
       </button>
 
       <h1 style="font-size:42px; margin-bottom:10px;">
-        Edit Interaction
+       ${t("editInteraction")}
       </h1>
 
       <p style="font-size:20px; color:#6f6255;">
@@ -2730,27 +2730,27 @@ function showEditInteraction(memberName, categoryName, interactionIndex) {
 
       <br>
 
-      <select
-        id="editInteractionOutcome"
-        style="width:100%; max-width:400px; padding:15px; border-radius:12px; border:1px solid #ccc; font-size:18px; margin-bottom:20px;"
-      >
-        <option value="better">😊 Better</option>
-        <option value="same">😐 Same</option>
-        <option value="worse">😔 Worse</option>
-      </select>
+  <select
+  id="editInteractionOutcome"
+  style="width:100%; max-width:400px; padding:15px; border-radius:12px; border:1px solid #ccc; font-size:18px; margin-bottom:20px;"
+>
+  <option value="better">😊 ${t("better")}</option>
+  <option value="same">😐 ${t("same")}</option>
+  <option value="worse">😔 ${t("worse")}</option>
+</select>
 
       <br>
 
       <textarea
         id="editInteractionNotes"
-        placeholder="Notes (optional)"
+        placeholder="${t("notesOptional")}"
         style="width:100%; max-width:400px; height:120px; padding:15px; border-radius:12px; border:1px solid #ccc; font-size:18px; font-family:Georgia, serif; margin-bottom:20px;"
       >${interaction.notes || ""}</textarea>
 
       <br>
 
       <button onclick="saveEditedInteraction('${memberName}', '${categoryName}', ${interactionIndex})">
-        Save Changes
+   ${t("saveChanges")}
       </button>
 
     </div>
