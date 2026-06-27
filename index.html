@@ -185,6 +185,22 @@ addInteraction: "Add Interaction",
 interactionWith: "Interaction with:",
 howDidYouFeel: "How did you feel after interacting with this person today?",
 
+tribeOverview: "Tribe Overview",
+energy: "Energy",
+lastInteraction: "Last Interaction",
+trend: "Trend",
+relationshipHealth: "Relationship Health",
+openProfile: "Open Profile",
+closeButton: "Close",
+interactions: "Interactions",
+last: "Last",
+supportScore: "Support Score",
+health: "Health",
+averageScore: "Average Score",
+noMembersYet: "No members yet.",
+noInteractionsYet: "No interactions yet.",
+editInteraction: "Edit Interaction",
+
 relationshipEnergy: "Relationship Energy",
 relationshipProximity: "Relationship Proximity",
 
@@ -365,6 +381,22 @@ history: "Histórico",
 addInteraction: "Adicionar Interação",
 interactionWith: "Interação com:",
 howDidYouFeel: "Como você se sentiu após interagir com essa pessoa hoje?",
+
+  tribeOverview: "Visão Geral da Tribo",
+energy: "Energia",
+lastInteraction: "Última Interação",
+trend: "Tendência",
+relationshipHealth: "Saúde do Relacionamento",
+openProfile: "Abrir Perfil",
+closeButton: "Fechar",
+interactions: "Interações",
+last: "Última",
+supportScore: "Pontuação de Apoio",
+health: "Saúde",
+averageScore: "Pontuação Média",
+noMembersYet: "Nenhum membro ainda.",
+noInteractionsYet: "Nenhuma interação ainda.",
+editInteraction: "Editar Interação",
 
 relationshipEnergy: "Energia do Relacionamento",
 relationshipProximity: "Proximidade do Relacionamento",
@@ -1067,15 +1099,15 @@ function showVillageMemberPanel(memberName, categoryName) {
         </h2>
 
         <div style="color:#6f6255; margin-bottom:16px;">
-          ${member.relationship} · ${member.category}
+         ${member.relationship} · ${translateCategoryLabel(member.category)}
         </div>
 
         <div style="line-height:1.8; color:#6f6255; font-size:15px;">
-          ⭐ Energy: ${calculateRelationshipEnergy(member)}<br>
+        ⭐ ${t("energy")}: ${calculateRelationshipEnergy(member)}<br>
 
-📅 Last Interaction: ${getLastInteraction(member)}<br>
-📈 Trend: ${getRelationshipTrend(member)}<br>
-❤️ Relationship Health: ${getRelationshipHealth(member)}
+📅 ${t("lastInteraction")}: ${getLastInteraction(member)}<br>
+📈 ${t("trend")}: ${getRelationshipTrend(member)}<br>
+❤️ ${t("relationshipHealth")}: ${getRelationshipHealth(member)}
         </div>
 
         <br>
@@ -1085,7 +1117,7 @@ function showVillageMemberPanel(memberName, categoryName) {
           color:#fffaf1;
           margin-bottom:10px;
         ">
-          Open Profile
+          ${t("openProfile")}
         </button>
 
         <br>
@@ -1094,7 +1126,7 @@ function showVillageMemberPanel(memberName, categoryName) {
           background:#d8c8af;
           color:#2e2721;
         ">
-          Close
+         ${t("closeButton")}
         </button>
 
       </div>
