@@ -1072,7 +1072,7 @@ function showVillageMemberPanel(memberName, categoryName) {
 
         <div style="line-height:1.8; color:#6f6255; font-size:15px;">
           ⭐ Energy: ${calculateRelationshipEnergy(member)}<br>
-🔥 Proximity: ${member.proximity || "Close"}<br>
+
 📅 Last Interaction: ${getLastInteraction(member)}<br>
 📈 Trend: ${getRelationshipTrend(member)}<br>
 ❤️ Relationship Health: ${getRelationshipHealth(member)}
@@ -1955,16 +1955,6 @@ ${
 }
 </div>
 
-<div style="
-  font-size:14px;
-  margin-top:6px;
-">
-  ${
-    member.proximity === "Very Close" ? "🔥 Very Close" :
-    member.proximity === "Distant" ? "🌙 Distant" :
-    "🤝 Close"
-  }
-</div>
 
 <div style="
   font-size:13px;
