@@ -1476,52 +1476,6 @@ ${t("addMember")}
   ${getRelationshipOptions(categoryName)}
 </select>
 
-  <br><br>
-
-<p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
-  ${t("relationshipEnergy")}
-</p>
-
-<select
-  id="memberEnergy"
-  style="
-    width:100%;
-    max-width:400px;
-    padding:15px;
-    border-radius:12px;
-    border:1px solid #ccc;
-    font-size:18px;
-  "
->
-<option value="Very Supportive">${t("verySupportive")}</option>
-<option value="Supportive">${t("supportive")}</option>
-<option value="Neutral" selected>${t("neutral")}</option>
-<option value="Draining">${t("draining")}</option>
-<option value="Very Draining">${t("veryDraining")}</option>
-</select>
-
-<br><br>
-
-<p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
-  ${t("relationshipProximity")}
-</p>
-
-<select
-  id="memberProximity"
-  style="
-    width:100%;
-    max-width:400px;
-    padding:15px;
-    border-radius:12px;
-    border:1px solid #ccc;
-    font-size:18px;
-  "
->
-  <option value="Very Close">${t("veryClose")}</option>
-<option value="Close" selected>${t("close")}</option>
-<option value="Distant">${t("distant")}</option>
-</select>
-
 <br><br>
 
 <p style="font-size:18px; color:#6f6255; margin-bottom:12px;">
@@ -1628,12 +1582,10 @@ function saveMember(categoryName) {
 
   const relationship =
     document.getElementById("memberRelationship").value.trim();
-
-const energy =
-  document.getElementById("memberEnergy").value;
-
-const proximity =
-  document.getElementById("memberProximity").value;
+  
+  const energy = "Neutral";
+  
+const proximity = "Close";
   
   const avatar =
     document.getElementById("memberAvatar").value;
@@ -1642,7 +1594,7 @@ const proximity =
     document.getElementById("memberPhoto");
 
   if (!memberName || !relationship) {
-    alert("Please add name and relationship.");
+    alert(t("fillNameRelationship"));
     return;
   }
 
