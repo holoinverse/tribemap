@@ -1495,10 +1495,10 @@ function getRelationshipHealth(member) {
     return "🌟 Excellent";
   }
 
-  if (
-    score >= 70 &&
-    trend !== "↓ Drifting"
-  ) {
+ if (
+  score >= 70 &&
+  trend !== "Drifting"
+) {
     return "🟢 Healthy";
   }
 
@@ -2824,12 +2824,12 @@ function saveEditedInteraction(memberName, categoryName, interactionIndex) {
     if (interaction.outcome === "worse") score -= 1;
   });
 
-  if (score >= 4) return "Very Supportive";
-  if (score >= 1) return "Supportive";
-  if (score === 0) return "Neutral";
-  if (score <= -4) return "Very Draining";
+ if (score >= 4) return "Very Supportive";
+if (score >= 1) return "Supportive";
+if (score === 0) return "Neutral";
+if (score <= -4) return "Very Draining";
 
-  return "Draining";
+return "Draining";
 }
     
 function saveData() {
