@@ -214,6 +214,12 @@ neutral: "Neutral",
 draining: "Draining",
 veryDraining: "Very Draining",
 
+excellent: "Excellent",
+healthy: "Healthy",
+uncertain: "Uncertain",
+strained: "Strained",
+critical: "Critical",
+   
 veryClose: "Very Close",
 close: "Close",
 distant: "Distant",
@@ -414,6 +420,12 @@ supportive: "Positiva",
 neutral: "Neutra",
 draining: "Desgastante",
 veryDraining: "Muito Desgastante",
+
+excellent: "Excelente",
+healthy: "Saudável",
+uncertain: "Incerta",
+strained: "Tensa",
+critical: "Crítica",
 
 veryClose: "Muito Próximo",
 close: "Próximo",
@@ -1494,31 +1506,31 @@ function getRelationshipHealth(member) {
   const trend = getRelationshipTrend(member);
   const energy = calculateRelationshipEnergy(member);
 
-  if (
-    score >= 85 &&
-    trend !== "Drifting" &&
-    energy !== "Draining" &&
-    energy !== "Very Draining"
-  ) {
-    return "🌟 Excellent";
-  }
-
  if (
+  score >= 85 &&
+  trend !== "Drifting" &&
+  energy !== "Draining" &&
+  energy !== "Very Draining"
+) {
+  return "🌟 " + t("excellent");
+}
+
+if (
   score >= 70 &&
   trend !== "Drifting"
 ) {
-    return "🟢 Healthy";
-  }
+  return "🟢 " + t("healthy");
+}
 
-  if (score >= 50) {
-    return "🟡 Uncertain";
-  }
+if (score >= 50) {
+  return "🟡 " + t("uncertain");
+}
 
-  if (score >= 30) {
-    return "🟠 Strained";
-  }
+if (score >= 30) {
+  return "🟠 " + t("strained");
+}
 
-  return "🔴 Critical";
+return "🔴 " + t("critical");
 }
 
 function getActivityScore(member) {
